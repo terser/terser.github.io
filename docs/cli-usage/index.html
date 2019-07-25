@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>CLI Usage · Terser</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Overview"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="CLI Usage · Terser"/><meta property="og:type" content="website"/><meta property="og:url" content="https://terser.org/"/><meta property="og:description" content="## Overview"/><meta property="og:image" content="https://terser.org/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://terser.org/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://terser.org/blog/atom.xml" title="Terser Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://terser.org/blog/feed.xml" title="Terser Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/terser-logo.png" alt="Terser"/><h2 class="headerTitleWithLogo">Terser</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/repl" target="_self">REPL</a></li><li class="siteNavGroupActive siteNavItemActive"><a href="/docs/cli-usage" target="_self">Docs</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>CLI</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">CLI</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/cli-usage">CLI Usage</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api-reference">API Reference</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">CLI Usage</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="overview"></a><a href="#overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overview</h2>
+<pre><code class="hljs">    -h, <span class="hljs-comment">--help                  Print usage information.</span>
+                                `<span class="hljs-comment">--help options` for details on available options.</span>
+    -V, <span class="hljs-comment">--version               Print version number.</span>
+    -p, <span class="hljs-comment">--parse &lt;options&gt;       Specify parser options:</span>
+                                `acorn`  <span class="hljs-keyword">Use</span> Acorn <span class="hljs-keyword">for</span> parsing.
+                                <span class="hljs-string">`bare_returns`</span>  <span class="hljs-keyword">Allow</span> <span class="hljs-keyword">return</span> outside <span class="hljs-keyword">of</span> functions.
+                                                Useful <span class="hljs-keyword">when</span> minifying CommonJS
+                                                modules <span class="hljs-keyword">and</span> Userscripts that may
+                                                be anonymous <span class="hljs-keyword">function</span> <span class="hljs-keyword">wrapped</span> (IIFE)
+                                                <span class="hljs-keyword">by</span> the .user.js <span class="hljs-keyword">engine</span> <span class="hljs-string">`caller`</span>.
+                                <span class="hljs-string">`expression`</span>  <span class="hljs-keyword">Parse</span> a single expression, rather <span class="hljs-keyword">than</span>
+                                              a program (<span class="hljs-keyword">for</span> parsing <span class="hljs-keyword">JSON</span>).
+                                <span class="hljs-string">`spidermonkey`</span>  Assume <span class="hljs-keyword">input</span> files <span class="hljs-keyword">are</span> SpiderMonkey
+                                                AST <span class="hljs-keyword">format</span> (<span class="hljs-keyword">as</span> <span class="hljs-keyword">JSON</span>).
+    -c, <span class="hljs-comment">--compress [options]    Enable compressor/specify compressor options:</span>
+                                <span class="hljs-string">`pure_funcs`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> functions that can be safely
+                                              removed <span class="hljs-keyword">when</span> their <span class="hljs-keyword">return</span> <span class="hljs-keyword">values</span> <span class="hljs-keyword">are</span>
+                                              <span class="hljs-keyword">not</span> used.
+    -m, <span class="hljs-comment">--mangle [options]      Mangle names/specify mangler options:</span>
+                                <span class="hljs-string">`reserved`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">names</span> that should <span class="hljs-keyword">not</span> be mangled.
+    <span class="hljs-comment">--mangle-props [options]    Mangle properties/specify mangler options:</span>
+                                <span class="hljs-string">`builtins`</span>  Mangle property <span class="hljs-keyword">names</span> that overlaps
+                                            <span class="hljs-keyword">with</span> standard JavaScript globals.
+                                <span class="hljs-string">`debug`</span>  <span class="hljs-keyword">Add</span> debug prefix <span class="hljs-keyword">and</span> suffix.
+                                <span class="hljs-string">`domprops`</span>  Mangle property <span class="hljs-keyword">names</span> that overlaps
+                                            <span class="hljs-keyword">with</span> DOM properties.
+                                <span class="hljs-string">`keep_quoted`</span>  <span class="hljs-keyword">Only</span> mangle unquoted properties, quoted
+                                               properties <span class="hljs-keyword">are</span> automatically reserved.
+                                               <span class="hljs-string">`strict`</span> disables quoted properties
+                                               being automatically reserved.
+                                <span class="hljs-string">`regex`</span>  <span class="hljs-keyword">Only</span> mangle <span class="hljs-keyword">matched</span> property names.
+                                <span class="hljs-string">`reserved`</span>  <span class="hljs-keyword">List</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">names</span> that should <span class="hljs-keyword">not</span> be mangled.
+    -b, <span class="hljs-comment">--beautify [options]     Specify output options:</span>
+                                <span class="hljs-string">`preamble`</span>  Preamble <span class="hljs-keyword">to</span> prepend <span class="hljs-keyword">to</span> the output. You
+                                            can <span class="hljs-keyword">use</span> this <span class="hljs-keyword">to</span> <span class="hljs-keyword">insert</span> a <span class="hljs-keyword">comment</span>, <span class="hljs-keyword">for</span>
+                                            example <span class="hljs-keyword">for</span> licensing information.
+                                            This will <span class="hljs-keyword">not</span> be parsed, but the <span class="hljs-keyword">source</span>
+                                            <span class="hljs-keyword">map</span> will adjust <span class="hljs-keyword">for</span> its presence.
+                                <span class="hljs-string">`quote_style`</span>  Quote <span class="hljs-keyword">style</span>:
+                                               <span class="hljs-number">0</span> - <span class="hljs-keyword">auto</span>
+                                               <span class="hljs-number">1</span> - single
+                                               <span class="hljs-number">2</span> - <span class="hljs-keyword">double</span>
+                                               <span class="hljs-number">3</span> - original
+                                <span class="hljs-string">`wrap_iife`</span>  Wrap IIFEs <span class="hljs-keyword">in</span> parenthesis. Note: you may
+                                             want <span class="hljs-keyword">to</span> <span class="hljs-keyword">disable</span> <span class="hljs-string">`negate_iife`</span> <span class="hljs-keyword">under</span>
+                                             compressor options.
+    -o, <span class="hljs-comment">--output &lt;file&gt;         Output file path (default STDOUT). Specify `ast` or</span>
+                                <span class="hljs-string">`spidermonkey`</span> <span class="hljs-keyword">to</span> write Terser <span class="hljs-keyword">or</span> SpiderMonkey AST
+                                <span class="hljs-keyword">as</span> <span class="hljs-keyword">JSON</span> <span class="hljs-keyword">to</span> STDOUT respectively.
+    <span class="hljs-comment">--comments [filter]         Preserve copyright comments in the output. By</span>
+                                <span class="hljs-keyword">default</span> this works <span class="hljs-keyword">like</span> Google Closure, keeping
+                                JSDoc-<span class="hljs-keyword">style</span> comments that contain <span class="hljs-string">"@license"</span> <span class="hljs-keyword">or</span>
+                                <span class="hljs-string">"@preserve"</span>. You can <span class="hljs-keyword">optionally</span> pass one <span class="hljs-keyword">of</span> the
+                                <span class="hljs-keyword">following</span> arguments <span class="hljs-keyword">to</span> this flag:
+                                - <span class="hljs-string">"all"</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">keep</span> <span class="hljs-keyword">all</span> comments
+                                - a valid JS RegExp <span class="hljs-keyword">like</span> <span class="hljs-string">`/foo/`</span> <span class="hljs-keyword">or</span> <span class="hljs-string">`/^!/`</span> <span class="hljs-keyword">to</span>
+                                <span class="hljs-keyword">keep</span> <span class="hljs-keyword">only</span> matching comments.
+                                Note that currently <span class="hljs-keyword">not</span> *<span class="hljs-keyword">all</span>* comments can be
+                                kept <span class="hljs-keyword">when</span> compression <span class="hljs-keyword">is</span> <span class="hljs-keyword">on</span>, because <span class="hljs-keyword">of</span> dead
+                                code removal <span class="hljs-keyword">or</span> cascading statements <span class="hljs-keyword">into</span>
+                                sequences.
+    <span class="hljs-comment">--config-file &lt;file&gt;        Read `minify()` options from JSON file.</span>
+    -d, <span class="hljs-comment">--define &lt;expr&gt;[=value] Global definitions.</span>
+    <span class="hljs-comment">--ecma &lt;version&gt;            Specify ECMAScript release: 5, 6, 7 or 8.</span>
+    -e, <span class="hljs-comment">--enclose [arg[:value]] Embed output in a big function with configurable</span>
+                                arguments <span class="hljs-keyword">and</span> values.
+    <span class="hljs-comment">--ie8                       Support non-standard Internet Explorer 8.</span>
+                                Equivalent <span class="hljs-keyword">to</span> setting <span class="hljs-string">`ie8: true`</span> <span class="hljs-keyword">in</span> <span class="hljs-string">`minify()`</span>
+                                <span class="hljs-keyword">for</span> <span class="hljs-string">`compress`</span>, <span class="hljs-string">`mangle`</span> <span class="hljs-keyword">and</span> <span class="hljs-string">`output`</span> options.
+                                <span class="hljs-keyword">By</span> <span class="hljs-keyword">default</span> Terser will <span class="hljs-keyword">not</span> try <span class="hljs-keyword">to</span> be IE-proof.
+    <span class="hljs-comment">--keep-classnames           Do not mangle/drop class names.</span>
+    <span class="hljs-comment">--keep-fnames               Do not mangle/drop function names.  Useful for</span>
+                                code relying <span class="hljs-keyword">on</span> Function.prototype.name.
+    <span class="hljs-comment">--module                    Input is an ES6 module. If `compress` or `mangle` is</span>
+                                enabled <span class="hljs-keyword">then</span> the <span class="hljs-string">`toplevel`</span> <span class="hljs-keyword">option</span> will be enabled.
+    <span class="hljs-comment">--name-cache &lt;file&gt;         File to hold mangled name mappings.</span>
+    <span class="hljs-comment">--safari10                  Support non-standard Safari 10/11.</span>
+                                Equivalent <span class="hljs-keyword">to</span> setting <span class="hljs-string">`safari10: true`</span> <span class="hljs-keyword">in</span> <span class="hljs-string">`minify()`</span>
+                                <span class="hljs-keyword">for</span> <span class="hljs-string">`mangle`</span> <span class="hljs-keyword">and</span> <span class="hljs-string">`output`</span> options.
+                                <span class="hljs-keyword">By</span> <span class="hljs-keyword">default</span> <span class="hljs-string">`terser`</span> will <span class="hljs-keyword">not</span> <span class="hljs-keyword">work</span> around
+                                Safari <span class="hljs-number">10</span>/<span class="hljs-number">11</span> bugs.
+    <span class="hljs-comment">--source-map [options]      Enable source map/specify source map options:</span>
+                                <span class="hljs-string">`base`</span>  <span class="hljs-keyword">Path</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">compute</span> <span class="hljs-keyword">relative</span> paths <span class="hljs-keyword">from</span> <span class="hljs-keyword">input</span> files.
+                                <span class="hljs-string">`content`</span>  <span class="hljs-keyword">Input</span> <span class="hljs-keyword">source</span> <span class="hljs-keyword">map</span>, useful <span class="hljs-keyword">if</span> you<span class="hljs-string">'re compressing
+                                           JS that was generated from some other original
+                                           code. Specify "inline" if the source map is
+                                           included within the sources.
+                                `filename`  Name and/or location of the output source.
+                                `includeSources`  Pass this flag if you want to include
+                                                  the content of source files in the
+                                                  source map as sourcesContent property.
+                                `root`  Path to the original source to be included in
+                                        the source map.
+                                `url`  If specified, path to the source map to append in
+                                       `//# sourceMappingURL`.
+    --timings                   Display operations run time on STDERR.
+    --toplevel                  Compress and/or mangle variables in top level scope.
+    --verbose                   Print diagnostic messages.
+    --warn                      Print warning messages.
+    --wrap &lt;name&gt;               Embed everything in a big function, making the
+                                “exports” and “global” variables available. You
+                                need to pass an argument to this option to
+                                specify the name that your module will take
+                                when included in, say, a browser.
+</span></code></pre>
+<p>Specify <code>--output</code> (<code>-o</code>) to declare the output file.  Otherwise the output
+goes to STDOUT.</p>
+<h2><a class="anchor" aria-hidden="true" id="cli-source-map-options"></a><a href="#cli-source-map-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CLI source map options</h2>
+<p>Terser can generate a source map file, which is highly useful for
+debugging your compressed JavaScript.  To get a source map, pass
+<code>--source-map --output output.js</code> (source map will be written out to
+<code>output.js.map</code>).</p>
+<p>Additional options:</p>
+<ul>
+<li><p><code>--source-map &quot;filename='&lt;NAME&gt;'&quot;</code> to specify the name of the source map.</p></li>
+<li><p><code>--source-map &quot;root='&lt;URL&gt;'&quot;</code> to pass the URL where the original files can be found.</p></li>
+<li><p><code>--source-map &quot;url='&lt;URL&gt;'&quot;</code> to specify the URL where the source map can be found.
+Otherwise Terser assumes HTTP <code>X-SourceMap</code> is being used and will omit the
+<code>//# sourceMappingURL=</code> directive.</p></li>
+</ul>
+<p>For example:</p>
+<pre><code class="hljs">terser js/file1.js js/file2.js \
+         -o foo.min.js -c -m \
+         --source-map &quot;root='http://foo.com/src',url='foo.min.js.map'&quot;
+</code></pre>
+<p>The above will compress and mangle <code>file1.js</code> and <code>file2.js</code>, will drop the
+output in <code>foo.min.js</code> and the source map in <code>foo.min.js.map</code>.  The source
+mapping will refer to <code>http://foo.com/src/js/file1.js</code> and
+<code>http://foo.com/src/js/file2.js</code> (in fact it will list <code>http://foo.com/src</code>
+as the source map root, and the original files as <code>js/file1.js</code> and
+<code>js/file2.js</code>).</p>
+<h3><a class="anchor" aria-hidden="true" id="composed-source-map"></a><a href="#composed-source-map" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Composed source map</h3>
+<p>When you're compressing JS code that was output by a compiler such as
+CoffeeScript, mapping to the JS code won't be too helpful.  Instead, you'd
+like to map back to the original code (i.e. CoffeeScript).  Terser has an
+option to take an input source map.  Assuming you have a mapping from
+CoffeeScript → compiled JS, Terser can generate a map from CoffeeScript →
+compressed JS by mapping every token in the compiled JS to its original
+location.</p>
+<p>To use this feature pass <code>--source-map &quot;content='/path/to/input/source.map'&quot;</code>
+or <code>--source-map &quot;content=inline&quot;</code> if the source map is included inline with
+the sources.</p>
+<h2><a class="anchor" aria-hidden="true" id="cli-compress-options"></a><a href="#cli-compress-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CLI compress options</h2>
+<p>You need to pass <code>--compress</code> (<code>-c</code>) to enable the compressor.  Optionally
+you can pass a comma-separated list of <a href="#compress-options">compress options</a>.</p>
+<p>Options are in the form <code>foo=bar</code>, or just <code>foo</code> (the latter implies
+a boolean option that you want to set <code>true</code>; it's effectively a
+shortcut for <code>foo=true</code>).</p>
+<p>Example:</p>
+<pre><code class="hljs">terser file.js -c toplevel,sequences=false
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="cli-mangle-options"></a><a href="#cli-mangle-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CLI mangle options</h2>
+<p>To enable the mangler you need to pass <code>--mangle</code> (<code>-m</code>).  The following
+(comma-separated) options are supported:</p>
+<ul>
+<li><p><code>toplevel</code> (default <code>false</code>) -- mangle names declared in the top level scope.</p></li>
+<li><p><code>eval</code> (default <code>false</code>) -- mangle names visible in scopes where <code>eval</code> or <code>with</code> are used.</p></li>
+</ul>
+<p>When mangling is enabled but you want to prevent certain names from being
+mangled, you can declare those names with <code>--mangle reserved</code> — pass a
+comma-separated list of names.  For example:</p>
+<pre><code class="hljs">terser ... -m reserved=['$','require','exports']
+</code></pre>
+<p>to prevent the <code>require</code>, <code>exports</code> and <code>$</code> names from being changed.</p>
+<h3><a class="anchor" aria-hidden="true" id="cli-mangling-property-names-mangle-props"></a><a href="#cli-mangling-property-names-mangle-props" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CLI mangling property names (<code>--mangle-props</code>)</h3>
+<p><strong>Note:</strong> THIS <strong>WILL</strong> BREAK YOUR CODE. A good rule of thumb is not to use this unless you know exactly what you're doing and how this works and read this section until the end.</p>
+<p>Mangling property names is a separate step, different from variable name mangling.  Pass
+<code>--mangle-props</code> to enable it. The least dangerous
+way to use this is to use the <code>regex</code> option like so:</p>
+<pre><code class="hljs">terser <span class="hljs-built_in">example</span>.js -c -m --mangle-<span class="hljs-built_in">props</span> regex=/<span class="hljs-symbol">_</span>$/
+</code></pre>
+<p>This will mangle all properties that start with an
+underscore. So you can use it to mangle internal methods.</p>
+<p>By default, it will mangle all properties in the
+input code with the exception of built in DOM properties and properties
+in core JavaScript classes, which is what will break your code if you don't:</p>
+<ol>
+<li>Control all the code you're mangling</li>
+<li>Avoid using a module bundler, as they usually will call Terser on each file individually, making it impossible to pass mangled objects between modules.</li>
+<li>Avoid calling functions like <code>defineProperty</code> or <code>hasOwnProperty</code>, because they refer to object properties using strings and will break your code if you don't know what you are doing.</li>
+</ol>
+<p>An example:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-comment">// example.js</span>
+<span class="hljs-keyword">var</span> x = {
+    <span class="hljs-attr">baz_</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">foo_</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">calc</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.foo_ + <span class="hljs-keyword">this</span>.baz_;
+    }
+};
+x.bar_ = <span class="hljs-number">2</span>;
+x[<span class="hljs-string">"baz_"</span>] = <span class="hljs-number">3</span>;
+<span class="hljs-built_in">console</span>.log(x.calc());
+</code></pre>
+<p>Mangle all properties (except for JavaScript <code>builtins</code>) (<strong>very</strong> unsafe):</p>
+<pre><code class="hljs css language-bash">$ terser example.js -c -m --mangle-props
+</code></pre>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">l</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.t=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.l());
+</code></pre>
+<p>Mangle all properties except for <code>reserved</code> properties (still very unsafe):</p>
+<pre><code class="hljs css language-bash">$ terser example.js -c -m --mangle-props reserved=[foo_,bar_]
+</code></pre>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">foo_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">_</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.foo_+<span class="hljs-keyword">this</span>.o}};x.bar_=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x._());
+</code></pre>
+<p>Mangle all properties matching a <code>regex</code> (not as unsafe but still unsafe):</p>
+<pre><code class="hljs css language-bash">$ terser example.js -c -m --mangle-props regex=/_$/
+</code></pre>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">calc</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.l=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.calc());
+</code></pre>
+<p>Combining mangle properties options:</p>
+<pre><code class="hljs css language-bash">$ terser example.js -c -m --mangle-props regex=/_$/,reserved=[bar_]
+</code></pre>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">calc</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.bar_=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.calc());
+</code></pre>
+<p>In order for this to be of any use, we avoid mangling standard JS names by
+default (<code>--mangle-props builtins</code> to override).</p>
+<p>A default exclusion file is provided in <code>tools/domprops.json</code> which should
+cover most standard JS and DOM properties defined in various browsers.  Pass
+<code>--mangle-props domprops</code> to disable this feature.</p>
+<p>A regular expression can be used to define which property names should be
+mangled.  For example, <code>--mangle-props regex=/^_/</code> will only mangle property
+names that start with an underscore.</p>
+<p>When you compress multiple files using this option, in order for them to
+work together in the end we need to ensure somehow that one property gets
+mangled to the same name in all of them.  For this, pass <code>--name-cache filename.json</code>
+and Terser will maintain these mappings in a file which can then be reused.
+It should be initially empty.  Example:</p>
+<pre><code class="hljs css language-bash">$ rm -f /tmp/cache.json  <span class="hljs-comment"># start fresh</span>
+$ terser file1.js file2.js --mangle-props --name-cache /tmp/cache.json -o part1.js
+$ terser file3.js file4.js --mangle-props --name-cache /tmp/cache.json -o part2.js
+</code></pre>
+<p>Now, <code>part1.js</code> and <code>part2.js</code> will be consistent with each other in terms
+of mangled property names.</p>
+<p>Using the name cache is not necessary if you compress all your files in a
+single call to Terser.</p>
+<h3><a class="anchor" aria-hidden="true" id="mangling-unquoted-names-mangle-props-keep_quoted"></a><a href="#mangling-unquoted-names-mangle-props-keep_quoted" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mangling unquoted names (<code>--mangle-props keep_quoted</code>)</h3>
+<p>Using quoted property name (<code>o[&quot;foo&quot;]</code>) reserves the property name (<code>foo</code>)
+so that it is not mangled throughout the entire script even when used in an
+unquoted style (<code>o.foo</code>). Example:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-comment">// stuff.js</span>
+<span class="hljs-keyword">var</span> o = {
+    <span class="hljs-string">"foo"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">bar</span>: <span class="hljs-number">3</span>
+};
+o.foo += o.bar;
+<span class="hljs-built_in">console</span>.log(o.foo);
+</code></pre>
+<pre><code class="hljs css language-bash">$ terser stuff.js --mangle-props keep_quoted -c -m
+</code></pre>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> o={<span class="hljs-attr">foo</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">o</span>:<span class="hljs-number">3</span>};o.foo+=o.o,<span class="hljs-built_in">console</span>.log(o.foo);
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="debugging-property-name-mangling"></a><a href="#debugging-property-name-mangling" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Debugging property name mangling</h3>
+<p>You can also pass <code>--mangle-props debug</code> in order to mangle property names
+without completely obscuring them. For example the property <code>o.foo</code>
+would mangle to <code>o._$foo$_</code> with this option. This allows property mangling
+of a large codebase while still being able to debug the code and identify
+where mangling is breaking things.</p>
+<pre><code class="hljs css language-bash">$ terser stuff.js --mangle-props debug -c -m
+</code></pre>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> o={<span class="hljs-attr">_$foo$_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">_$bar$_</span>:<span class="hljs-number">3</span>};o._$foo$_+=o._$bar$_,<span class="hljs-built_in">console</span>.log(o._$foo$_);
+</code></pre>
+<p>You can also pass a custom suffix using <code>--mangle-props debug=XYZ</code>. This would then
+mangle <code>o.foo</code> to <code>o._$foo$XYZ_</code>. You can change this each time you compile a
+script to identify how a property got mangled. One technique is to pass a
+random number on every compile to simulate mangling changing with different
+inputs (e.g. as you update the input script with new properties), and to help
+identify mistakes like writing mangled keys to storage.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/api-reference"><span>API Reference</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#overview">Overview</a></li><li><a href="#cli-source-map-options">CLI source map options</a><ul class="toc-headings"><li><a href="#composed-source-map">Composed source map</a></li></ul></li><li><a href="#cli-compress-options">CLI compress options</a></li><li><a href="#cli-mangle-options">CLI mangle options</a><ul class="toc-headings"><li><a href="#cli-mangling-property-names-mangle-props">CLI mangling property names (<code>--mangle-props</code>)</a></li><li><a href="#mangling-unquoted-names-mangle-props-keep_quoted">Mangling unquoted names (<code>--mangle-props keep_quoted</code>)</a></li><li><a href="#debugging-property-name-mangling">Debugging property name mangling</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/terser-logo.png" alt="Terser" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/cli-usage.html">CLI Usage</a><a href="/docs/api-reference.html">API Reference</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/terser" target="_blank" rel="noreferrer noopener">Stack Overflow</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/terser-js">GitHub Org</a><a href="https://github.com/terser-js/terser">GitHub Repo</a></div></section></footer></div></body></html>
