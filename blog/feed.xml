@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
     <channel>
-        <title>Terser Blog</title>
+        <title>terser Blog</title>
         <link>https://terser.org/blog</link>
-        <description>The best place to stay up-to-date with the latest Terser news and events.</description>
+        <description>The best place to stay up-to-date with the latest terser news and events.</description>
         <lastBuildDate>Thu, 01 Jan 1970 00:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
-            <title>Terser Blog</title>
-            <url>https://terser.org/img/terser-logo.png</url>
+            <title>terser Blog</title>
+            <url>https://terser.org/img/terser-square-logo.png</url>
             <link>https://terser.org/blog</link>
         </image>
         <copyright>Copyright © 2019 terser.org</copyright>

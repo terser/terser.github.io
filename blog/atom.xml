@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://terser.org/blog</id>
-    <title>Terser Blog</title>
+    <title>terser Blog</title>
     <updated>1970-01-01T00:00:00Z</updated>
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="https://terser.org/blog"/>
-    <subtitle>The best place to stay up-to-date with the latest Terser news and events.</subtitle>
-    <logo>https://terser.org/img/terser-logo.png</logo>
+    <subtitle>The best place to stay up-to-date with the latest terser news and events.</subtitle>
+    <logo>https://terser.org/img/terser-square-logo.png</logo>
     <rights>Copyright © 2019 terser.org</rights>
     <entry>
         <title type="html"><![CDATA[Hello World]]></title>
