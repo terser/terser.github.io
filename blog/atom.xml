@@ -14,9 +14,7 @@
         <link href="https://terser.org/blog/2019/7/24/hello-world.html">
         </link>
         <updated>1970-01-01T00:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>This is the first blog post.</p>
-<p>This should be truncated.</p>
-]]></summary>
+        <summary type="html"><![CDATA[<p>Yay! This is officially the first blog post!</p> <p>From this point on we will be using this section to announce terser releases and changelogs. There will also be some other types of posts so be sure to check it out!</p> <p>Meanwhile feel free to see our new webs...</p>]]></summary>
         <author>
             <name>Terser</name>
             <uri>https://terser.org</uri>
