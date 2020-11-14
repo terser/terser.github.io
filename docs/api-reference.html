@@ -56,20 +56,23 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">API Reference</h1></header><article><div><span><p>Assuming installation via NPM, you can load Terser in your application
 like this:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> Terser = <span class="hljs-built_in">require</span>(<span class="hljs-string">"terser"</span>);
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> { minify } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"terser"</span>);
+</code></pre>
+<p>Or,</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">import</span> { minify } <span class="hljs-keyword">from</span> <span class="hljs-string">"terser"</span>;
 </code></pre>
 <p>Browser loading is also supported:</p>
 <pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node_modules/source-map/dist/source-map.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"dist/bundle.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-<p>There is a single high level function, <strong><code>minify(code, options)</code></strong>,
+<p>There is a single async high level function, <strong><code>async minify(code, options)</code></strong>,
 which will perform all minification <a href="#minify-options">phases</a> in a configurable
-manner. By default <code>minify()</code> will enable the options <a href="#compress-options"><code>compress</code></a>
+manner. There is no synchronous function, but this functionality can be achieved with a package like <a href="https://github.com/abbr/deasync">deasync</a>. By default <code>minify()</code> will enable the options <a href="#compress-options"><code>compress</code></a>
 and <a href="#mangle-options"><code>mangle</code></a>. Example:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> code = <span class="hljs-string">"function add(first, second) { return first + second; }"</span>;
-<span class="hljs-keyword">var</span> result = Terser.minify(code);
-<span class="hljs-built_in">console</span>.log(result.error); <span class="hljs-comment">// runtime error, or `undefined` if no error</span>
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> minify(code, { <span class="hljs-attr">sourceMap</span>: <span class="hljs-literal">true</span> });
 <span class="hljs-built_in">console</span>.log(result.code);  <span class="hljs-comment">// minified output: function add(n,d){return n+d}</span>
+<span class="hljs-built_in">console</span>.log(result.map);  <span class="hljs-comment">// source map</span>
 </code></pre>
 <p>You can <code>minify</code> more than one JavaScript file at a time by using an object
 for the first argument where the keys are file names and the values are source
@@ -78,7 +81,7 @@ code:</p>
     <span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"function add(first, second) { return first + second; }"</span>,
     <span class="hljs-string">"file2.js"</span>: <span class="hljs-string">"console.log(add(1 + 2, 3 + 4));"</span>
 };
-<span class="hljs-keyword">var</span> result = Terser.minify(code);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> minify(code);
 <span class="hljs-built_in">console</span>.log(result.code);
 <span class="hljs-comment">// function add(d,n){return d+n}console.log(add(3,7));</span>
 </code></pre>
@@ -88,7 +91,7 @@ code:</p>
     <span class="hljs-string">"file2.js"</span>: <span class="hljs-string">"console.log(add(1 + 2, 3 + 4));"</span>
 };
 <span class="hljs-keyword">var</span> options = { <span class="hljs-attr">toplevel</span>: <span class="hljs-literal">true</span> };
-<span class="hljs-keyword">var</span> result = Terser.minify(code, options);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> minify(code, options);
 <span class="hljs-built_in">console</span>.log(result.code);
 <span class="hljs-comment">// console.log(3+7);</span>
 </code></pre>
@@ -99,10 +102,10 @@ code:</p>
     },
     <span class="hljs-attr">nameCache</span>: {}
 };
-<span class="hljs-keyword">var</span> result1 = Terser.minify({
+<span class="hljs-keyword">var</span> result1 = <span class="hljs-keyword">await</span> minify({
     <span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"function add(first, second) { return first + second; }"</span>
 }, options);
-<span class="hljs-keyword">var</span> result2 = Terser.minify({
+<span class="hljs-keyword">var</span> result2 = <span class="hljs-keyword">await</span> minify({
     <span class="hljs-string">"file2.js"</span>: <span class="hljs-string">"console.log(add(1 + 2, 3 + 4));"</span>
 }, options);
 <span class="hljs-built_in">console</span>.log(result1.code);
@@ -118,11 +121,11 @@ code:</p>
     },
     <span class="hljs-attr">nameCache</span>: <span class="hljs-built_in">JSON</span>.parse(fs.readFileSync(cacheFileName, <span class="hljs-string">"utf8"</span>))
 };
-fs.writeFileSync(<span class="hljs-string">"part1.js"</span>, Terser.minify({
+fs.writeFileSync(<span class="hljs-string">"part1.js"</span>, <span class="hljs-keyword">await</span> minify({
     <span class="hljs-string">"file1.js"</span>: fs.readFileSync(<span class="hljs-string">"file1.js"</span>, <span class="hljs-string">"utf8"</span>),
     <span class="hljs-string">"file2.js"</span>: fs.readFileSync(<span class="hljs-string">"file2.js"</span>, <span class="hljs-string">"utf8"</span>)
 }, options).code, <span class="hljs-string">"utf8"</span>);
-fs.writeFileSync(<span class="hljs-string">"part2.js"</span>, Terser.minify({
+fs.writeFileSync(<span class="hljs-string">"part2.js"</span>, <span class="hljs-keyword">await</span> minify({
     <span class="hljs-string">"file3.js"</span>: fs.readFileSync(<span class="hljs-string">"file3.js"</span>, <span class="hljs-string">"utf8"</span>),
     <span class="hljs-string">"file4.js"</span>: fs.readFileSync(<span class="hljs-string">"file4.js"</span>, <span class="hljs-string">"utf8"</span>)
 }, options).code, <span class="hljs-string">"utf8"</span>);
@@ -141,40 +144,28 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
         },
         <span class="hljs-attr">passes</span>: <span class="hljs-number">2</span>
     },
-    <span class="hljs-attr">output</span>: {
-        <span class="hljs-attr">beautify</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">format</span>: {
         <span class="hljs-attr">preamble</span>: <span class="hljs-string">"/* minified */"</span>
     }
 };
-<span class="hljs-keyword">var</span> result = Terser.minify(code, options);
+<span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> minify(code, options);
 <span class="hljs-built_in">console</span>.log(result.code);
 <span class="hljs-comment">// /* minified */</span>
 <span class="hljs-comment">// alert(10);"</span>
 </code></pre>
-<p>To produce warnings:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> code = <span class="hljs-string">"function f(){ var u; return 2 + 3; }"</span>;
-<span class="hljs-keyword">var</span> options = { <span class="hljs-attr">warnings</span>: <span class="hljs-literal">true</span> };
-<span class="hljs-keyword">var</span> result = Terser.minify(code, options);
-<span class="hljs-built_in">console</span>.log(result.error);    <span class="hljs-comment">// runtime error, `undefined` in this case</span>
-<span class="hljs-built_in">console</span>.log(result.warnings); <span class="hljs-comment">// [ 'Dropping unused variable u [0:1,18]' ]</span>
-<span class="hljs-built_in">console</span>.log(result.code);     <span class="hljs-comment">// function f(){return 5}</span>
-</code></pre>
 <p>An error example:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> result = Terser.minify({<span class="hljs-string">"foo.js"</span> : <span class="hljs-string">"if (0) else console.log(1);"</span>});
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(result.error));
-<span class="hljs-comment">// {"message":"Unexpected token: keyword (else)","filename":"foo.js","line":1,"col":7,"pos":7}</span>
-</code></pre>
-<p>Note: unlike <code>uglify-js@2.x</code>, the Terser API does not throw errors.
-To achieve a similar effect one could do the following:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> result = Terser.minify(code, options);
-<span class="hljs-keyword">if</span> (result.error) <span class="hljs-keyword">throw</span> result.error;
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> minify({<span class="hljs-string">"foo.js"</span> : <span class="hljs-string">"if (0) else console.log(1);"</span>});
+    <span class="hljs-comment">// Do something with result</span>
+} <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-keyword">const</span> { message, filename, line, col, pos } = error;
+    <span class="hljs-comment">// Do something with error</span>
+}
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="minify-options"></a><a href="#minify-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Minify options</h2>
 <ul>
-<li><p><code>ecma</code> (default <code>undefined</code>) - pass <code>5</code>, <code>6</code>, <code>7</code> or <code>8</code> to override <code>parse</code>,
-<code>compress</code> and <code>output</code> options.</p></li>
-<li><p><code>warnings</code> (default <code>false</code>) — pass <code>true</code> to return compressor warnings
-in <code>result.warnings</code>. Use the value <code>&quot;verbose&quot;</code> for more detailed warnings.</p></li>
+<li><p><code>ecma</code> (default <code>undefined</code>) - pass <code>5</code>, <code>2015</code>, <code>2016</code>, etc to override
+<code>compress</code> and <code>format</code>'s <code>ecma</code> options.</p></li>
 <li><p><code>parse</code> (default <code>{}</code>) — pass an object if you wish to specify some
 additional <a href="#parse-options">parse options</a>.</p></li>
 <li><p><code>compress</code> (default <code>{}</code>) — pass <code>false</code> to skip compressing entirely.
@@ -188,8 +179,8 @@ Pass an object to specify custom <a href="#mangle-properties-options">mangle pro
 <li><p><code>module</code> (default <code>false</code>) — Use when minifying an ES6 module. &quot;use strict&quot;
 is implied and names can be mangled on the top scope. If <code>compress</code> or
 <code>mangle</code> is enabled then the <code>toplevel</code> option will be enabled.</p></li>
-<li><p><code>output</code> (default <code>null</code>) — pass an object if you wish to specify
-additional <a href="#output-options">output options</a>.  The defaults are optimized
+<li><p><code>format</code> or <code>output</code> (default <code>null</code>) — pass an object if you wish to specify
+additional <a href="#format-options">format options</a>.  The defaults are optimized
 for best compression.</p></li>
 <li><p><code>sourceMap</code> (default <code>false</code>) - pass an object if you wish to specify
 <a href="#source-map-options">source map options</a>.</p></li>
@@ -211,7 +202,7 @@ Useful for code relying on <code>Function.prototype.name</code>. If the top leve
 minify option <code>keep_fnames</code>.</p></li>
 <li><p><code>safari10</code> (default: <code>false</code>) - pass <code>true</code> to work around Safari 10/11 bugs in
 loop scoping and <code>await</code>. See <code>safari10</code> options in <a href="#mangle-options"><code>mangle</code></a>
-and <a href="#output-options"><code>output</code></a> for details.</p></li>
+and <a href="#format-options"><code>format</code></a> for details.</p></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="minify-options-structure"></a><a href="#minify-options-structure" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Minify options structure</h2>
 <pre><code class="hljs css language-javascript">{
@@ -228,13 +219,13 @@ and <a href="#output-options"><code>output</code></a> for details.</p></li>
             <span class="hljs-comment">// mangle property options</span>
         }
     },
-    <span class="hljs-attr">output</span>: {
-        <span class="hljs-comment">// output options</span>
+    <span class="hljs-attr">format</span>: {
+        <span class="hljs-comment">// format options (can also use `output` for backwards compatibility)</span>
     },
     <span class="hljs-attr">sourceMap</span>: {
         <span class="hljs-comment">// source map options</span>
     },
-    <span class="hljs-attr">ecma</span>: <span class="hljs-number">5</span>, <span class="hljs-comment">// specify one of: 5, 6, 7 or 8</span>
+    <span class="hljs-attr">ecma</span>: <span class="hljs-number">5</span>, <span class="hljs-comment">// specify one of: 5, 2015, 2016, etc.</span>
     keep_classnames: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">keep_fnames</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">ie8</span>: <span class="hljs-literal">false</span>,
@@ -242,12 +233,11 @@ and <a href="#output-options"><code>output</code></a> for details.</p></li>
     <span class="hljs-attr">nameCache</span>: <span class="hljs-literal">null</span>, <span class="hljs-comment">// or specify a name cache object</span>
     safari10: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">toplevel</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,
 }
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="source-map-options"></a><a href="#source-map-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Source map options</h3>
 <p>To generate a source map:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> result = Terser.minify({<span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"var a = function() {};"</span>}, {
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> minify({<span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"var a = function() {};"</span>}, {
     <span class="hljs-attr">sourceMap</span>: {
         <span class="hljs-attr">filename</span>: <span class="hljs-string">"out.js"</span>,
         <span class="hljs-attr">url</span>: <span class="hljs-string">"out.js.map"</span>
@@ -264,7 +254,7 @@ in source map file.</p>
 <p>You can set option <code>sourceMap.url</code> to be <code>&quot;inline&quot;</code> and source map will
 be appended to code.</p>
 <p>You can also specify sourceRoot property to be included in source map:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> result = Terser.minify({<span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"var a = function() {};"</span>}, {
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> minify({<span class="hljs-string">"file1.js"</span>: <span class="hljs-string">"var a = function() {};"</span>}, {
     <span class="hljs-attr">sourceMap</span>: {
         <span class="hljs-attr">root</span>: <span class="hljs-string">"http://example.com/src"</span>,
         <span class="hljs-attr">url</span>: <span class="hljs-string">"out.js.map"</span>
@@ -273,7 +263,7 @@ be appended to code.</p>
 </code></pre>
 <p>If you're compressing compiled JavaScript and have a source map for it, you
 can use <code>sourceMap.content</code>:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> result = Terser.minify({<span class="hljs-string">"compiled.js"</span>: <span class="hljs-string">"compiled code"</span>}, {
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> minify({<span class="hljs-string">"compiled.js"</span>: <span class="hljs-string">"compiled code"</span>}, {
     <span class="hljs-attr">sourceMap</span>: {
         <span class="hljs-attr">content</span>: <span class="hljs-string">"content from compiled.js.map"</span>,
         <span class="hljs-attr">url</span>: <span class="hljs-string">"minified.js.map"</span>
@@ -282,20 +272,22 @@ can use <code>sourceMap.content</code>:</p>
 <span class="hljs-comment">// same as before, it returns `code` and `map`</span>
 </code></pre>
 <p>If you're using the <code>X-SourceMap</code> header instead, you can just omit <code>sourceMap.url</code>.</p>
+<p>If you happen to need the source map as a raw object, set <code>sourceMap.asObject</code> to <code>true</code>.</p>
 <h2><a class="anchor" aria-hidden="true" id="parse-options"></a><a href="#parse-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parse options</h2>
 <ul>
 <li><p><code>bare_returns</code> (default <code>false</code>) -- support top level <code>return</code> statements</p></li>
-<li><p><code>ecma</code> (default: <code>8</code>) -- specify one of <code>5</code>, <code>6</code>, <code>7</code> or <code>8</code>. Note: this setting
-is not presently enforced except for ES8 optional trailing commas in function
-parameter lists and calls with <code>ecma</code> <code>8</code>.</p></li>
 <li><p><code>html5_comments</code> (default <code>true</code>)</p></li>
 <li><p><code>shebang</code> (default <code>true</code>) -- support <code>#!command</code> as the first line</p></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="compress-options"></a><a href="#compress-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Compress options</h2>
 <ul>
-<li><p><code>arrows</code> (default: <code>true</code>) -- Converts <code>()=&gt;{return x}</code> to <code>()=&gt;x</code>. Class
-and object literal methods will also be converted to arrow expressions if
-the resultant code is shorter: <code>m(){return x}</code> becomes <code>m:()=&gt;x</code>.</p></li>
+<li><p><code>defaults</code> (default: <code>true</code>) -- Pass <code>false</code> to disable most default
+enabled <code>compress</code> transforms. Useful when you only want to enable a few
+<code>compress</code> options while disabling the rest.</p></li>
+<li><p><code>arrows</code> (default: <code>true</code>) -- Class and object literal methods are converted
+will also be converted to arrow expressions if the resultant code is shorter:
+<code>m(){return x}</code> becomes <code>m:()=&gt;x</code>. To do this to regular ES5 functions which
+don't use <code>this</code> or <code>arguments</code>, see <code>unsafe_arrows</code>.</p></li>
 <li><p><code>arguments</code> (default: <code>false</code>) -- replace <code>arguments[index]</code> with function
 parameter name whenever possible.</p></li>
 <li><p><code>booleans</code> (default: <code>true</code>) -- various optimizations for boolean context,
@@ -312,16 +304,13 @@ into regular ones: <code>{[&quot;computed&quot;]: 1}</code> is converted to <cod
 <li><p><code>conditionals</code> (default: <code>true</code>) -- apply optimizations for <code>if</code>-s and conditional
 expressions</p></li>
 <li><p><code>dead_code</code> (default: <code>true</code>) -- remove unreachable code</p></li>
-<li><p><code>defaults</code> (default: <code>true</code>) -- Pass <code>false</code> to disable most default
-enabled <code>compress</code> transforms. Useful when you only want to enable a few
-<code>compress</code> options while disabling the rest.</p></li>
 <li><p><code>directives</code> (default: <code>true</code>) -- remove redundant or non-standard directives</p></li>
 <li><p><code>drop_console</code> (default: <code>false</code>) -- Pass <code>true</code> to discard calls to
 <code>console.*</code> functions. If you wish to drop a specific function call
 such as <code>console.info</code> and/or retain side effects from function arguments
 after dropping the function call then use <code>pure_funcs</code> instead.</p></li>
 <li><p><code>drop_debugger</code> (default: <code>true</code>) -- remove <code>debugger;</code> statements</p></li>
-<li><p><code>ecma</code> (default: <code>5</code>) -- Pass <code>6</code> or greater to enable <code>compress</code> options that
+<li><p><code>ecma</code> (default: <code>5</code>) -- Pass <code>2015</code> or greater to enable <code>compress</code> options that
 will transform ES5 code into smaller ES6+ equivalent forms.</p></li>
 <li><p><code>evaluate</code> (default: <code>true</code>) -- attempt to evaluate constant expressions</p></li>
 <li><p><code>expression</code> (default: <code>false</code>) -- Pass <code>true</code> to preserve completion values
@@ -384,11 +373,7 @@ this, Terser will assume that object property access
 (e.g. <code>foo.bar</code> or <code>foo[&quot;bar&quot;]</code>) doesn't have any side effects.
 Specify <code>&quot;strict&quot;</code> to treat <code>foo.bar</code> as side-effect-free only when
 <code>foo</code> is certain to not throw, i.e. not <code>null</code> or <code>undefined</code>.</p></li>
-<li><p><code>reduce_funcs</code> (default: <code>true</code>) -- Allows single-use functions to be
-inlined as function expressions when permissible allowing further
-optimization.  Enabled by default.  Option depends on <code>reduce_vars</code>
-being enabled.  Some code runs faster in the Chrome V8 engine if this
-option is disabled.  Does not negatively impact other major browsers.</p></li>
+<li><p><code>reduce_funcs</code> (legacy option, safely ignored for backwards compatibility).</p></li>
 <li><p><code>reduce_vars</code> (default: <code>true</code>) -- Improve optimization on variables assigned with and
 used as constant values.</p></li>
 <li><p><code>sequences</code> (default: <code>true</code>) -- join consecutive simple statements using the
@@ -399,10 +384,8 @@ to disable. The smallest <code>sequences</code> length is <code>2</code>. A <cod
 is grandfathered to be equivalent to <code>true</code> and as such means <code>200</code>. On rare
 occasions the default sequences limit leads to very slow compress times in which
 case a value of <code>20</code> or less is recommended.</p></li>
-<li><p><code>side_effects</code> (default: <code>true</code>) -- Pass <code>false</code> to disable potentially dropping
-functions marked as &quot;pure&quot;.  A function call is marked as &quot;pure&quot; if a comment
-annotation <code>/*@__PURE__*/</code> or <code>/*#__PURE__*/</code> immediately precedes the call. For
-example: <code>/*@__PURE__*/foo();</code></p></li>
+<li><p><code>side_effects</code> (default: <code>true</code>) -- Remove expressions which have no side effects
+and whose results aren't used.</p></li>
 <li><p><code>switches</code> (default: <code>true</code>) -- de-duplicate and remove unreachable <code>switch</code> branches</p></li>
 <li><p><code>toplevel</code> (default: <code>false</code>) -- drop unreferenced functions (<code>&quot;funcs&quot;</code>) and/or
 variables (<code>&quot;vars&quot;</code>) in the top level scope (<code>false</code> by default, <code>true</code> to drop
@@ -419,7 +402,7 @@ earlier versions due to known issues.</p></li>
 expressions to arrow functions if the function body does not reference <code>this</code>.
 Note: it is not always safe to perform this conversion if code relies on the
 the function having a <code>prototype</code>, which arrow functions lack.
-This transform requires that the <code>ecma</code> compress option is set to <code>6</code> or greater.</p></li>
+This transform requires that the <code>ecma</code> compress option is set to <code>2015</code> or greater.</p></li>
 <li><p><code>unsafe_comps</code> (default: <code>false</code>) -- Reverse <code>&lt;</code> and <code>&lt;=</code> to <code>&gt;</code> and <code>&gt;=</code> to
 allow improved compression. This might be unsafe when an at least one of two
 operands is an object with computed values due the use of methods like <code>get</code>,
@@ -430,6 +413,8 @@ comparison are switching. Compression only works if both <code>comparisons</code
 when both <code>args</code> and <code>code</code> are string literals.</p></li>
 <li><p><code>unsafe_math</code> (default: <code>false</code>) -- optimize numerical expressions like
 <code>2 * x * 3</code> into <code>6 * x</code>, which may give imprecise floating point results.</p></li>
+<li><p><code>unsafe_symbols</code> (default: <code>false</code>) -- removes keys from native Symbol
+declarations, e.g <code>Symbol(&quot;kDog&quot;)</code> becomes <code>Symbol()</code>.</p></li>
 <li><p><code>unsafe_methods</code> (default: false) -- Converts <code>{ m: function(){} }</code> to
 <code>{ m(){} }</code>. <code>ecma</code> must be set to <code>6</code> or greater to enable this transform.
 If <code>unsafe_methods</code> is a RegExp then key/value pairs with keys matching the
@@ -445,8 +430,6 @@ variable named <code>undefined</code> in scope (variable name will be mangled, t
 reduced to a single character)</p></li>
 <li><p><code>unused</code> (default: <code>true</code>) -- drop unreferenced functions and variables (simple
 direct variable assignments do not count as references unless set to <code>&quot;keep_assign&quot;</code>)</p></li>
-<li><p><code>warnings</code> (default: <code>false</code>) -- display warnings when dropping unreachable
-code or unused declarations etc.</p></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="mangle-options"></a><a href="#mangle-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mangle options</h2>
 <ul>
@@ -468,7 +451,7 @@ top level scope.</p></li>
 <li><p><code>safari10</code> (default <code>false</code>) -- Pass <code>true</code> to work around the Safari 10 loop
 iterator <a href="https://bugs.webkit.org/show_bug.cgi?id=171041">bug</a>
 &quot;Cannot declare a let variable twice&quot;.
-See also: the <code>safari10</code> <a href="#output-options">output option</a>.</p></li>
+See also: the <code>safari10</code> <a href="#format-options">format option</a>.</p></li>
 </ul>
 <p>Examples:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-comment">// test.js</span>
@@ -479,13 +462,13 @@ See also: the <code>safari10</code> <a href="#output-options">output option</a>.
 </code></pre>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> code = fs.readFileSync(<span class="hljs-string">"test.js"</span>, <span class="hljs-string">"utf8"</span>);
 
-Terser.minify(code).code;
+<span class="hljs-keyword">await</span> minify(code).code;
 <span class="hljs-comment">// 'function funcName(a,n){}var globalVar;'</span>
 
-Terser.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hljs-attr">reserved</span>: [<span class="hljs-string">'firstLongName'</span>] } }).code;
+<span class="hljs-keyword">await</span> minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hljs-attr">reserved</span>: [<span class="hljs-string">'firstLongName'</span>] } }).code;
 <span class="hljs-comment">// 'function funcName(firstLongName,a){}var globalVar;'</span>
 
-Terser.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hljs-attr">toplevel</span>: <span class="hljs-literal">true</span> } }).code;
+<span class="hljs-keyword">await</span> minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hljs-attr">toplevel</span>: <span class="hljs-literal">true</span> } }).code;
 <span class="hljs-comment">// 'function n(n,a){}var a;'</span>
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="mangle-properties-options"></a><a href="#mangle-properties-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mangle properties options</h3>
@@ -504,34 +487,40 @@ explicitly reserved.</li>
 <li><p><code>regex</code> (default: <code>null</code>) — Pass a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">RegExp literal or pattern string</a> to only mangle property matching the regular expression.</p></li>
 <li><p><code>reserved</code> (default: <code>[]</code>) — Do not mangle property names listed in the
 <code>reserved</code> array.</p></li>
+<li><p><code>undeclared</code> (default: <code>false</code>) - Mangle those names when they are accessed
+as properties of known top level variables but their declarations are never
+found in input code. May be useful when only minifying parts of a project.
+See <a href="https://github.com/terser/terser/issues/397">#397</a> for more details.</p></li>
 </ul>
-<h2><a class="anchor" aria-hidden="true" id="output-options"></a><a href="#output-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Output options</h2>
-<p>The code generator tries to output shortest code possible by default.  In
-case you want beautified output, pass <code>--beautify</code> (<code>-b</code>).  Optionally you
-can pass additional arguments that control the code output:</p>
+<h2><a class="anchor" aria-hidden="true" id="format-options"></a><a href="#format-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Format options</h2>
+<p>These options control the format of Terser's output code. Previously known
+as &quot;output options&quot;.</p>
 <ul>
 <li><p><code>ascii_only</code> (default <code>false</code>) -- escape Unicode characters in strings and
 regexps (affects directives with non-ascii characters becoming invalid)</p></li>
-<li><p><code>beautify</code> (default <code>true</code>) -- whether to actually beautify the output.
+<li><p><code>beautify</code> (default <code>false</code>) -- whether to actually beautify the output.
 Passing <code>-b</code> will set this to true, but you might need to pass <code>-b</code> even
 when you want to generate minified code, in order to specify additional
 arguments, so you can use <code>-b beautify=false</code> to override it.</p></li>
 <li><p><code>braces</code> (default <code>false</code>) -- always insert braces in <code>if</code>, <code>for</code>,
 <code>do</code>, <code>while</code> or <code>with</code> statements, even if their body is a single
 statement.</p></li>
-<li><p><code>comments</code> (default <code>false</code>) -- pass <code>true</code> or <code>&quot;all&quot;</code> to preserve all
-comments, <code>&quot;some&quot;</code> to preserve some comments, a regular expression string
+<li><p><code>comments</code> (default <code>&quot;some&quot;</code>) -- by default it keeps JSDoc-style comments
+that contain &quot;@license&quot; or &quot;@preserve&quot;, pass <code>true</code> or <code>&quot;all&quot;</code> to preserve all
+comments, <code>false</code> to omit comments in the output, a regular expression string
 (e.g. <code>/^!/</code>) or a function.</p></li>
-<li><p><code>ecma</code> (default <code>5</code>) -- set output printing mode. Set <code>ecma</code> to <code>6</code> or
-greater to emit shorthand object properties - i.e.: <code>{a}</code> instead of <code>{a: a}</code>.
-The <code>ecma</code> option will only change the output in direct control of the
-beautifier. Non-compatible features in the abstract syntax tree will still
-be output as is. For example: an <code>ecma</code> setting of <code>5</code> will <strong>not</strong> convert
-ES6+ code to ES5.</p></li>
+<li><p><code>ecma</code> (default <code>5</code>) -- set desired EcmaScript standard version for output.
+Set <code>ecma</code> to <code>2015</code> or greater to emit shorthand object properties - i.e.:
+<code>{a}</code> instead of <code>{a: a}</code>.  The <code>ecma</code> option will only change the output in
+direct control of the beautifier. Non-compatible features in your input will
+still be output as is. For example: an <code>ecma</code> setting of <code>5</code> will <strong>not</strong>
+convert modern code to ES5.</p></li>
 <li><p><code>indent_level</code> (default <code>4</code>)</p></li>
 <li><p><code>indent_start</code> (default <code>0</code>) -- prefix all lines by that many spaces</p></li>
 <li><p><code>inline_script</code> (default <code>true</code>) -- escape HTML comments and the slash in
 occurrences of <code>&lt;/script&gt;</code> in strings</p></li>
+<li><p><code>keep_numbers</code> (default <code>false</code>) -- keep number literals as it was in original code
+(disables optimizations like converting <code>1000000</code> into <code>1e6</code>)</p></li>
 <li><p><code>keep_quoted_props</code> (default <code>false</code>) -- when turned on, prevents stripping
 quotes from property names in object literals.</p></li>
 <li><p><code>max_line_len</code> (default <code>false</code>) -- maximum line length (for minified code)</p></li>
@@ -550,6 +539,7 @@ more double quotes in the string itself. <code>0</code> is best for gzip size.</
 <li><code>2</code> -- always use double quotes</li>
 <li><code>3</code> -- always use the original quotes</li>
 </ul></li>
+<li><p><code>preserve_annotations</code> -- (default <code>false</code>) -- Preserve <a href="#annotations">Terser annotations</a> in the output.</p></li>
 <li><p><code>safari10</code> (default <code>false</code>) -- set this option to <code>true</code> to work around
 the <a href="https://bugs.webkit.org/show_bug.cgi?id=176685">Safari 10/11 await bug</a>.
 See also: the <code>safari10</code> <a href="#mangle-options">mangle option</a>.</p></li>
@@ -563,6 +553,9 @@ PhantomJS users should set this option to <code>true</code>.</p></li>
 <li><p><code>wrap_iife</code> (default <code>false</code>) -- pass <code>true</code> to wrap immediately invoked
 function expressions. See
 <a href="https://github.com/mishoo/UglifyJS2/issues/640">#640</a> for more details.</p></li>
+<li><p><code>wrap_func_args</code> (default <code>true</code>) -- pass <code>false</code> if you do not want to wrap
+function expressions that are passed as arguments, in parenthesis. See
+<a href="https://github.com/nolanlawson/optimize-js">OptimizeJS</a> for more details.</p></li>
 </ul>
 <h1><a class="anchor" aria-hidden="true" id="miscellaneous"></a><a href="#miscellaneous" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Miscellaneous</h1>
 <h3><a class="anchor" aria-hidden="true" id="keeping-copyright-notices-or-other-comments"></a><a href="#keeping-copyright-notices-or-other-comments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Keeping copyright notices or other comments</h3>
@@ -610,9 +603,6 @@ dead code removal Terser will discard the following from the output:</p>
 }
 </code></pre>
 <p>You can specify nested constants in the form of <code>--define env.DEBUG=false</code>.</p>
-<p>Terser will warn about the condition being always false and about dropping
-unreachable code; for now there is no option to turn off only this specific
-warning, you can pass <code>warnings=false</code> to turn off <em>all</em> warnings.</p>
 <p>Another way of doing that is to declare your globals as constants in a
 separate file and include it into the build.  For example you can have a
 <code>build/defines.js</code> file with the following:</p>
@@ -631,7 +621,7 @@ using <code>var</code> with <code>reduce_vars</code> (enabled by default) should
 <h3><a class="anchor" aria-hidden="true" id="conditional-compilation-api"></a><a href="#conditional-compilation-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Conditional compilation API</h3>
 <p>You can also use conditional compilation via the programmatic API. With the difference that the
 property name is <code>global_defs</code> and is a compressor property:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> result = Terser.minify(fs.readFileSync(<span class="hljs-string">"input.js"</span>, <span class="hljs-string">"utf8"</span>), {
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> minify(fs.readFileSync(<span class="hljs-string">"input.js"</span>, <span class="hljs-string">"utf8"</span>), {
     <span class="hljs-attr">compress</span>: {
         <span class="hljs-attr">dead_code</span>: <span class="hljs-literal">true</span>,
         <span class="hljs-attr">global_defs</span>: {
@@ -643,7 +633,7 @@ property name is <code>global_defs</code> and is a compressor property:</p>
 <p>To replace an identifier with an arbitrary non-constant expression it is
 necessary to prefix the <code>global_defs</code> key with <code>&quot;@&quot;</code> to instruct Terser
 to parse the value as an expression:</p>
-<pre><code class="hljs css language-javascript">Terser.minify(<span class="hljs-string">"alert('hello');"</span>, {
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">await</span> minify(<span class="hljs-string">"alert('hello');"</span>, {
     <span class="hljs-attr">compress</span>: {
         <span class="hljs-attr">global_defs</span>: {
             <span class="hljs-string">"@alert"</span>: <span class="hljs-string">"console.log"</span>
@@ -653,7 +643,7 @@ to parse the value as an expression:</p>
 <span class="hljs-comment">// returns: 'console.log("hello");'</span>
 </code></pre>
 <p>Otherwise it would be replaced as string literal:</p>
-<pre><code class="hljs css language-javascript">Terser.minify(<span class="hljs-string">"alert('hello');"</span>, {
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">await</span> minify(<span class="hljs-string">"alert('hello');"</span>, {
     <span class="hljs-attr">compress</span>: {
         <span class="hljs-attr">global_defs</span>: {
             <span class="hljs-string">"alert"</span>: <span class="hljs-string">"console.log"</span>
@@ -662,44 +652,23 @@ to parse the value as an expression:</p>
 }).code;
 <span class="hljs-comment">// returns: '"console.log"("hello");'</span>
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="using-native-terser-ast-with-minify"></a><a href="#using-native-terser-ast-with-minify" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using native Terser AST with <code>minify()</code></h3>
-<pre><code class="hljs css language-javascript"><span class="hljs-comment">// example: parse only, produce native Terser AST</span>
+<h3><a class="anchor" aria-hidden="true" id="annotations"></a><a href="#annotations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Annotations</h3>
+<p>Annotations in Terser are a way to tell it to treat a certain function call differently. The following annotations are available:</p>
+<ul>
+<li><code>/*@__INLINE__*/</code> - forces a function to be inlined somewhere.</li>
+<li><code>/*@__NOINLINE__*/</code> - Makes sure the called function is not inlined into the call site.</li>
+<li><code>/*@__PURE__*/</code> - Marks a function call as pure. That means, it can safely be dropped.</li>
+</ul>
+<p>You can use either a <code>@</code> sign at the start, or a <code>#</code>.</p>
+<p>Here are some examples on how to use them:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-comment">/*@__INLINE__*/</span>
+function_always_inlined_here()
 
-<span class="hljs-keyword">var</span> result = Terser.minify(code, {
-    <span class="hljs-attr">parse</span>: {},
-    <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">mangle</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">output</span>: {
-        <span class="hljs-attr">ast</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">code</span>: <span class="hljs-literal">false</span>  <span class="hljs-comment">// optional - faster if false</span>
-    }
-});
+<span class="hljs-comment">/*#__NOINLINE__*/</span>
+function_cant_be_inlined_into_here()
 
-<span class="hljs-comment">// result.ast contains native Terser AST</span>
+<span class="hljs-keyword">const</span> x = <span class="hljs-comment">/*#__PURE__*/</span>i_am_dropped_if_x_is_not_used()
 </code></pre>
-<pre><code class="hljs css language-javascript"><span class="hljs-comment">// example: accept native Terser AST input and then compress and mangle</span>
-<span class="hljs-comment">//          to produce both code and native AST.</span>
-
-<span class="hljs-keyword">var</span> result = Terser.minify(ast, {
-    <span class="hljs-attr">compress</span>: {},
-    <span class="hljs-attr">mangle</span>: {},
-    <span class="hljs-attr">output</span>: {
-        <span class="hljs-attr">ast</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">code</span>: <span class="hljs-literal">true</span>  <span class="hljs-comment">// optional - faster if false</span>
-    }
-});
-
-<span class="hljs-comment">// result.ast contains native Terser AST</span>
-<span class="hljs-comment">// result.code contains the minified code in string form.</span>
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="working-with-terser-ast"></a><a href="#working-with-terser-ast" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Working with Terser AST</h3>
-<p>Traversal and transformation of the native AST can be performed through
-<a href="https://github.com/fabiosantoscode/terser/blob/master/lib/ast.js"><code>TreeWalker</code></a> and
-<a href="https://github.com/fabiosantoscode/terser/blob/master/lib/transform.js"><code>TreeTransformer</code></a>
-respectively.</p>
-<p>Largely compatible native AST examples can be found in the original UglifyJS
-documentation. See: <a href="http://lisperator.net/uglifyjs/walk">tree walker</a> and
-<a href="http://lisperator.net/uglifyjs/transform">tree transform</a>.</p>
 <h3><a class="anchor" aria-hidden="true" id="estree-spidermonkey-ast"></a><a href="#estree-spidermonkey-ast" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ESTree / SpiderMonkey AST</h3>
 <p>Terser has its own abstract syntax tree format; for
 <a href="http://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/">practical reasons</a>
@@ -744,7 +713,7 @@ Terser builds by 3 to 4 times.</p>
 <pre><code class="hljs">terser <span class="hljs-keyword">file</span>.js -<span class="hljs-built_in">m</span>
 </code></pre>
 <p>To enable fast minify mode with the API use:</p>
-<pre><code class="hljs css language-js">Terser.minify(code, { <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">mangle</span>: <span class="hljs-literal">true</span> });
+<pre><code class="hljs css language-js"><span class="hljs-keyword">await</span> minify(code, { <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">mangle</span>: <span class="hljs-literal">true</span> });
 </code></pre>
 <h4><a class="anchor" aria-hidden="true" id="source-maps-and-debugging"></a><a href="#source-maps-and-debugging" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Source maps and debugging</h4>
 <p>Various <code>compress</code> transforms that simplify, rearrange, inline and remove code
@@ -766,6 +735,8 @@ objects they have not been overridden.</li>
 <li>Object properties can be added, removed and modified (not prevented with
 <code>Object.defineProperty()</code>, <code>Object.defineProperties()</code>, <code>Object.freeze()</code>,
 <code>Object.preventExtensions()</code> or <code>Object.seal()</code>).</li>
+<li><code>document.all</code> is not <code>== null</code></li>
+<li>Assigning properties to a class doesn't have side effects and does not throw.</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="build-tools-and-adaptors-using-terser"></a><a href="#build-tools-and-adaptors-using-terser" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build Tools and Adaptors using Terser</h3>
 <p><a href="https://www.npmjs.com/browse/depended/terser">https://www.npmjs.com/browse/depended/terser</a></p>
@@ -784,7 +755,7 @@ to remove the existing <code>yarn</code> lock file and reinstall all packages:</
 <pre><code class="hljs"><span class="hljs-variable">$ </span>rm -rf node_modules yarn.lock
 <span class="hljs-variable">$ </span>yarn
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 7/26/2019 by rogeriopvl</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/cli-usage"><span class="arrow-prev">← </span><span>CLI Usage</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#minify-options">Minify options</a></li><li><a href="#minify-options-structure">Minify options structure</a><ul class="toc-headings"><li><a href="#source-map-options">Source map options</a></li></ul></li><li><a href="#parse-options">Parse options</a></li><li><a href="#compress-options">Compress options</a></li><li><a href="#mangle-options">Mangle options</a><ul class="toc-headings"><li><a href="#mangle-properties-options">Mangle properties options</a></li></ul></li><li><a href="#output-options">Output options</a><ul class="toc-headings"><li><a href="#keeping-copyright-notices-or-other-comments">Keeping copyright notices or other comments</a></li><li><a href="#the-unsafe-compress-option">The <code>unsafe</code> <code>compress</code> option</a></li><li><a href="#conditional-compilation">Conditional compilation</a></li><li><a href="#conditional-compilation-api">Conditional compilation API</a></li><li><a href="#using-native-terser-ast-with-minify">Using native Terser AST with <code>minify()</code></a></li><li><a href="#working-with-terser-ast">Working with Terser AST</a></li><li><a href="#estree-spidermonkey-ast">ESTree / SpiderMonkey AST</a></li><li><a href="#use-acorn-for-parsing">Use Acorn for parsing</a></li><li><a href="#terser-fast-minify-mode">Terser Fast Minify Mode</a></li><li><a href="#compiler-assumptions">Compiler assumptions</a></li><li><a href="#build-tools-and-adaptors-using-terser">Build Tools and Adaptors using Terser</a></li><li><a href="#replacing-uglify-es-with-terser-in-a-project-using-yarn">Replacing <code>uglify-es</code> with <code>terser</code> in a project using <code>yarn</code></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/terser-square-logo.png" alt="terser" width="66"/></a><div><h5>Docs</h5><a href="/docs/cli-usage.html">CLI Usage</a><a href="/docs/api-reference.html">API Reference</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/terser" target="_blank" rel="noreferrer noopener">Stack Overflow</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/terser-js">GitHub Org</a><a href="https://github.com/terser-js/terser">GitHub Repo</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 11/14/2020 by Fábio Santos</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/cli-usage"><span class="arrow-prev">← </span><span>CLI Usage</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#minify-options">Minify options</a></li><li><a href="#minify-options-structure">Minify options structure</a><ul class="toc-headings"><li><a href="#source-map-options">Source map options</a></li></ul></li><li><a href="#parse-options">Parse options</a></li><li><a href="#compress-options">Compress options</a></li><li><a href="#mangle-options">Mangle options</a><ul class="toc-headings"><li><a href="#mangle-properties-options">Mangle properties options</a></li></ul></li><li><a href="#format-options">Format options</a><ul class="toc-headings"><li><a href="#keeping-copyright-notices-or-other-comments">Keeping copyright notices or other comments</a></li><li><a href="#the-unsafe-compress-option">The <code>unsafe</code> <code>compress</code> option</a></li><li><a href="#conditional-compilation">Conditional compilation</a></li><li><a href="#conditional-compilation-api">Conditional compilation API</a></li><li><a href="#annotations">Annotations</a></li><li><a href="#estree-spidermonkey-ast">ESTree / SpiderMonkey AST</a></li><li><a href="#use-acorn-for-parsing">Use Acorn for parsing</a></li><li><a href="#terser-fast-minify-mode">Terser Fast Minify Mode</a></li><li><a href="#compiler-assumptions">Compiler assumptions</a></li><li><a href="#build-tools-and-adaptors-using-terser">Build Tools and Adaptors using Terser</a></li><li><a href="#replacing-uglify-es-with-terser-in-a-project-using-yarn">Replacing <code>uglify-es</code> with <code>terser</code> in a project using <code>yarn</code></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/terser-square-logo.png" alt="terser" width="66"/></a><div><h5>Docs</h5><a href="/docs/cli-usage.html">CLI Usage</a><a href="/docs/api-reference.html">API Reference</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/terser" target="_blank" rel="noreferrer noopener">Stack Overflow</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/terser-js">GitHub Org</a><a href="https://github.com/terser-js/terser">GitHub Repo</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
@@ -802,4 +773,4 @@ to remove the existing <code>yarn</code> lock file and reinstall all packages:</
                 indexName: 'terser',
                 inputSelector: '#search_input_react'
               });
-            </script></body></html>
+            </script><script src="http://localhost:undefined/livereload.js"></script></body></html>
