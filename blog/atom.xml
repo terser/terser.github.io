@@ -1,61 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://terser.org/blog</id>
-    <title>terser Blog</title>
-    <updated>1970-01-01T00:00:00.000Z</updated>
+    <title>Terser Blog</title>
+    <updated>2019-09-09T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://terser.org/blog"/>
-    <subtitle>The best place to stay up-to-date with the latest terser news and events.</subtitle>
-    <logo>https://terser.org/img/terser-square-logo.png</logo>
-    <rights>Copyright © 2023 terser.org</rights>
+    <subtitle>Terser Blog</subtitle>
+    <icon>https://terser.org/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[terser v4.3.1]]></title>
-        <id>https://terser.org/blog/2019/9/9/terser-v4.3.1.html</id>
-        <link href="https://terser.org/blog/2019/9/9/terser-v4.3.1.html"/>
-        <updated>1970-01-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Version 4.3.1 is out!</p> <h3><a class="anchor" aria-hidden="true" id="heres-whats-new"></a><a href="#heres-whats-new" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Here's what's new:</h3> <ul> <li>Fixed an issue from 4.3.0 where any block scope within a for loop erroneously had its parent set to the function scopee</li> <li>Fixed an issue where compressing IIFEs with argument expansions would result in some par...</li></ul>]]></summary>
-        <author>
-            <name/>
-        </author>
+        <id>https://terser.org/blog/2019/9/9/terser-v4.3.1</id>
+        <link href="https://terser.org/blog/2019/9/9/terser-v4.3.1"/>
+        <updated>2019-09-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Version 4.3.1 is out!]]></summary>
+        <content type="html"><![CDATA[<p>Version 4.3.1 is out!</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="heres-whats-new">Here's what's new:<a href="#heres-whats-new" class="hash-link" aria-label="Direct link to Here's what's new:" title="Direct link to Here's what's new:">​</a></h3><ul><li>Fixed an issue from 4.3.0 where any block scope within a for loop erroneously had its parent set to the function scopee</li><li>Fixed an issue where compressing IIFEs with argument expansions would result in some parameters becoming undefined</li><li>addEventListener options argument's properties are now part of the DOM properties list.</li></ul>]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[terser v4.3.0]]></title>
-        <id>https://terser.org/blog/2019/9/7/terser-v4.3.0.html</id>
-        <link href="https://terser.org/blog/2019/9/7/terser-v4.3.0.html"/>
-        <updated>1970-01-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Version 4.3.0 is out!</p> <h3><a class="anchor" aria-hidden="true" id="heres-whats-new"></a><a href="#heres-whats-new" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Here's what's new:</h3> <ul> <li>Do not drop computed object keys with side effects</li> <li>Functions passed to other functions in calls are now wrapped in parentheses by default, which speeds up loading most modules</li> <li>Objects with computed properties...</li></ul>]]></summary>
-        <author>
-            <name/>
-        </author>
+        <id>https://terser.org/blog/2019/9/7/terser-v4.3.0</id>
+        <link href="https://terser.org/blog/2019/9/7/terser-v4.3.0"/>
+        <updated>2019-09-07T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Version 4.3.0 is out!]]></summary>
+        <content type="html"><![CDATA[<p>Version 4.3.0 is out!</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="heres-whats-new">Here's what's new:<a href="#heres-whats-new" class="hash-link" aria-label="Direct link to Here's what's new:" title="Direct link to Here's what's new:">​</a></h3><ul><li>Do not drop computed object keys with side effects</li><li>Functions passed to other functions in calls are now wrapped in parentheses by default, which speeds up loading most modules</li><li>Objects with computed properties are now less likely to be hoisted</li><li>Speed and memory efficiency optimizations</li><li>Fixed scoping issues with <code>try</code> and <code>switch</code></li></ul>]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[terser v4.2.1]]></title>
-        <id>https://terser.org/blog/2019/8/24/terser-v4.2.1.html</id>
-        <link href="https://terser.org/blog/2019/8/24/terser-v4.2.1.html"/>
-        <updated>1970-01-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Version 4.2.1 is out!</p> <h3><a class="anchor" aria-hidden="true" id="heres-whats-new"></a><a href="#heres-whats-new" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Here's what's new:</h3> <ul> <li>Minor refactors</li> <li>Fixed a bug similar to <a href="https://github.com/terser-js/terser/issues/369">#369</a> in collapse_vars</li> <li>Functions can no longer be inlined into a place where they're going to be compared with themselves.</li> <li>reduce_funcs option is now legacy, as using red...</li></ul>]]></summary>
-        <author>
-            <name/>
-        </author>
+        <id>https://terser.org/blog/2019/8/24/terser-v4.2.1</id>
+        <link href="https://terser.org/blog/2019/8/24/terser-v4.2.1"/>
+        <updated>2019-08-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Version 4.2.1 is out!]]></summary>
+        <content type="html"><![CDATA[<p>Version 4.2.1 is out!</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="heres-whats-new">Here's what's new:<a href="#heres-whats-new" class="hash-link" aria-label="Direct link to Here's what's new:" title="Direct link to Here's what's new:">​</a></h3><ul><li>Minor refactors</li><li>Fixed a bug similar to <a href="https://github.com/terser-js/terser/issues/369" target="_blank" rel="noopener noreferrer">#369</a> in collapse_vars</li><li>Functions can no longer be inlined into a place where they're going to be compared with themselves.</li><li>reduce_funcs option is now legacy, as using reduce_vars without reduce_funcs caused some weird corner cases. As a result, it is now implied in reduce_vars and can't be turned off without turning off reduce_vars.</li><li>Bug which would cause a random stack overflow has now been fixed.</li></ul>]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[terser v4.2.0]]></title>
-        <id>https://terser.org/blog/2019/8/19/terser-v4.2.0.html</id>
-        <link href="https://terser.org/blog/2019/8/19/terser-v4.2.0.html"/>
-        <updated>1970-01-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Version 4.2.0 is out!</p> <h3><a class="anchor" aria-hidden="true" id="heres-whats-new"></a><a href="#heres-whats-new" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Here's what's new:</h3> <ul> <li>When the source map URL is <code>inline</code>, don't write it to a file.</li> <li>Fixed output parens when a lambda literal is the tag on a tagged template string.</li> <li>The <code>mangle.properties.undeclared</code> option was added. This enables t...</li></ul>]]></summary>
-        <author>
-            <name/>
-        </author>
+        <id>https://terser.org/blog/2019/8/19/terser-v4.2.0</id>
+        <link href="https://terser.org/blog/2019/8/19/terser-v4.2.0"/>
+        <updated>2019-08-19T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Version 4.2.0 is out!]]></summary>
+        <content type="html"><![CDATA[<p>Version 4.2.0 is out!</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="heres-whats-new">Here's what's new:<a href="#heres-whats-new" class="hash-link" aria-label="Direct link to Here's what's new:" title="Direct link to Here's what's new:">​</a></h3><ul><li>When the source map URL is <code>inline</code>, don't write it to a file.</li><li>Fixed output parens when a lambda literal is the tag on a tagged template string.</li><li>The <code>mangle.properties.undeclared</code> option was added. This enables the property mangler to mangle properties of variables which can be found in the name cache, but whose properties are not known to this Terser run.</li><li>The v8 bug where the toString and source representations of regexes like <code>RegExp("\\\n")</code> includes an actual newline is now fixed.</li><li>Now we're guaranteed to not have duplicate comments in the output</li><li>Domprops updates</li></ul>]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello World]]></title>
-        <id>https://terser.org/blog/2019/7/24/hello-world.html</id>
-        <link href="https://terser.org/blog/2019/7/24/hello-world.html"/>
-        <updated>1970-01-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Yay! This is officially the first blog post!</p> <p>From this point on we will be using this section to announce terser releases and changelogs. There will also be some other types of posts so be sure to check it out!</p> <p>Meanwhile feel free to see our new webs...</p>]]></summary>
-        <author>
-            <name/>
-        </author>
+        <id>https://terser.org/blog/2019/7/24/hello-world</id>
+        <link href="https://terser.org/blog/2019/7/24/hello-world"/>
+        <updated>2019-07-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Yay! This is officially the first blog post!]]></summary>
+        <content type="html"><![CDATA[<p>Yay! This is officially the first blog post!</p><p>From this point on we will be using this section to announce terser releases and changelogs. There will also be some other types of posts so be sure to check it out!</p><p>Meanwhile feel free to see our new website with full terser documentation and an awesome <a href="https://try.terser.org" target="_blank" rel="noopener noreferrer">REPL</a>!</p>]]></content>
     </entry>
 </feed>

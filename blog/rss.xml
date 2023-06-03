@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Terser Blog</title>
+        <link>https://terser.org/blog</link>
+        <description>Terser Blog</description>
+        <lastBuildDate>Mon, 09 Sep 2019 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[terser v4.3.1]]></title>
+            <link>https://terser.org/blog/2019/9/9/terser-v4.3.1</link>
+            <guid>https://terser.org/blog/2019/9/9/terser-v4.3.1</guid>
+            <pubDate>Mon, 09 Sep 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Version 4.3.1 is out!]]></description>
+            <content:encoded><![CDATA[<p>Version 4.3.1 is out!</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="heres-whats-new">Here's what's new:<a href="#heres-whats-new" class="hash-link" aria-label="Direct link to Here's what's new:" title="Direct link to Here's what's new:">​</a></h3><ul><li>Fixed an issue from 4.3.0 where any block scope within a for loop erroneously had its parent set to the function scopee</li><li>Fixed an issue where compressing IIFEs with argument expansions would result in some parameters becoming undefined</li><li>addEventListener options argument's properties are now part of the DOM properties list.</li></ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[terser v4.3.0]]></title>
+            <link>https://terser.org/blog/2019/9/7/terser-v4.3.0</link>
+            <guid>https://terser.org/blog/2019/9/7/terser-v4.3.0</guid>
+            <pubDate>Sat, 07 Sep 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Version 4.3.0 is out!]]></description>
+            <content:encoded><![CDATA[<p>Version 4.3.0 is out!</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="heres-whats-new">Here's what's new:<a href="#heres-whats-new" class="hash-link" aria-label="Direct link to Here's what's new:" title="Direct link to Here's what's new:">​</a></h3><ul><li>Do not drop computed object keys with side effects</li><li>Functions passed to other functions in calls are now wrapped in parentheses by default, which speeds up loading most modules</li><li>Objects with computed properties are now less likely to be hoisted</li><li>Speed and memory efficiency optimizations</li><li>Fixed scoping issues with <code>try</code> and <code>switch</code></li></ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[terser v4.2.1]]></title>
+            <link>https://terser.org/blog/2019/8/24/terser-v4.2.1</link>
+            <guid>https://terser.org/blog/2019/8/24/terser-v4.2.1</guid>
+            <pubDate>Sat, 24 Aug 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Version 4.2.1 is out!]]></description>
+            <content:encoded><![CDATA[<p>Version 4.2.1 is out!</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="heres-whats-new">Here's what's new:<a href="#heres-whats-new" class="hash-link" aria-label="Direct link to Here's what's new:" title="Direct link to Here's what's new:">​</a></h3><ul><li>Minor refactors</li><li>Fixed a bug similar to <a href="https://github.com/terser-js/terser/issues/369" target="_blank" rel="noopener noreferrer">#369</a> in collapse_vars</li><li>Functions can no longer be inlined into a place where they're going to be compared with themselves.</li><li>reduce_funcs option is now legacy, as using reduce_vars without reduce_funcs caused some weird corner cases. As a result, it is now implied in reduce_vars and can't be turned off without turning off reduce_vars.</li><li>Bug which would cause a random stack overflow has now been fixed.</li></ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[terser v4.2.0]]></title>
+            <link>https://terser.org/blog/2019/8/19/terser-v4.2.0</link>
+            <guid>https://terser.org/blog/2019/8/19/terser-v4.2.0</guid>
+            <pubDate>Mon, 19 Aug 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Version 4.2.0 is out!]]></description>
+            <content:encoded><![CDATA[<p>Version 4.2.0 is out!</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="heres-whats-new">Here's what's new:<a href="#heres-whats-new" class="hash-link" aria-label="Direct link to Here's what's new:" title="Direct link to Here's what's new:">​</a></h3><ul><li>When the source map URL is <code>inline</code>, don't write it to a file.</li><li>Fixed output parens when a lambda literal is the tag on a tagged template string.</li><li>The <code>mangle.properties.undeclared</code> option was added. This enables the property mangler to mangle properties of variables which can be found in the name cache, but whose properties are not known to this Terser run.</li><li>The v8 bug where the toString and source representations of regexes like <code>RegExp("\\\n")</code> includes an actual newline is now fixed.</li><li>Now we're guaranteed to not have duplicate comments in the output</li><li>Domprops updates</li></ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Hello World]]></title>
+            <link>https://terser.org/blog/2019/7/24/hello-world</link>
+            <guid>https://terser.org/blog/2019/7/24/hello-world</guid>
+            <pubDate>Wed, 24 Jul 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Yay! This is officially the first blog post!]]></description>
+            <content:encoded><![CDATA[<p>Yay! This is officially the first blog post!</p><p>From this point on we will be using this section to announce terser releases and changelogs. There will also be some other types of posts so be sure to check it out!</p><p>Meanwhile feel free to see our new website with full terser documentation and an awesome <a href="https://try.terser.org" target="_blank" rel="noopener noreferrer">REPL</a>!</p>]]></content:encoded>
+        </item>
+    </channel>
+</rss>
