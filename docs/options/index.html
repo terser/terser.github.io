@@ -1,58 +1,182 @@
 <!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper docs-doc-page docs-version-current plugin-docs plugin-id-default docs-doc-id-options" data-has-hydrated="false">
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-options" data-has-hydrated="false">
 <head>
 <meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v2.4.3">
-<title data-rh="true">Options | Terser</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://terser.org/img/terser-square-logo.png"><meta data-rh="true" name="twitter:image" content="https://terser.org/img/terser-square-logo.png"><meta data-rh="true" property="og:url" content="https://terser.org/docs/options/"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Options | Terser"><meta data-rh="true" name="description" content="Parse options"><meta data-rh="true" property="og:description" content="Parse options"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://terser.org/docs/options/"><link data-rh="true" rel="alternate" href="https://terser.org/docs/options/" hreflang="en"><link data-rh="true" rel="alternate" href="https://terser.org/docs/options/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://N8MO33ENBY-dsn.algolia.net" crossorigin="anonymous"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Terser RSS Feed">
+<meta name="generator" content="Docusaurus v3.1.0">
+<title data-rh="true">Options | Terser</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://terser.org/img/terser-square-logo.png"><meta data-rh="true" name="twitter:image" content="https://terser.org/img/terser-square-logo.png"><meta data-rh="true" property="og:url" content="https://terser.org/docs/options/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Options | Terser"><meta data-rh="true" name="description" content="Parse options"><meta data-rh="true" property="og:description" content="Parse options"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://terser.org/docs/options/"><link data-rh="true" rel="alternate" href="https://terser.org/docs/options/" hreflang="en"><link data-rh="true" rel="alternate" href="https://terser.org/docs/options/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://N8MO33ENBY-dsn.algolia.net" crossorigin="anonymous"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Terser RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Terser Atom Feed">
 
 
 
-<link rel="search" type="application/opensearchdescription+xml" title="Terser" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.74b77208.css">
-<link rel="preload" href="/assets/js/runtime~main.f69e8dd4.js" as="script">
-<link rel="preload" href="/assets/js/main.b0f0fbf7.js" as="script">
+<link rel="search" type="application/opensearchdescription+xml" title="Terser" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.60f573ac.css">
+<script src="/assets/js/runtime~main.27e7f556.js" defer="defer"></script>
+<script src="/assets/js/main.1a7d8cf0.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
-<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}return t}()||function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
-<div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/terser-square-logo.svg" alt="Terser logo" class="themedImage_ToTc themedImage--light_HNdA" height="32" width="32"><img src="/img/terser-square-logo.svg" alt="Terser logo" class="themedImage_ToTc themedImage--dark_i4oU" height="32" width="32"></div><b class="navbar__title text--truncate">Terser</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/api-reference/">API Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/cli-usage/">CLI Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/options/">Options</a></div><div class="navbar__items navbar__items--right"><a href="https://try.terser.org" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">REPL<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://github.com/terser/terser" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://opencollective.com/terser" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Donate<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="searchBox_ZlJk"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0 docsWrapper_BCFX"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docPage__5DB"><aside class="theme-doc-sidebar-container docSidebarContainer_b6E3"><div class="sidebarViewport_Xe31"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/api-reference/">API Reference</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/cli-usage/">CLI Usage</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/miscellaneous/">Miscellaneous</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/docs/options/">Options</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/reporting-issues/">Reporting Issues</a></li><div style="padding:2ex 1ex"><div></div></div></ul></nav></div></div></aside><main class="docMainContainer_gTbr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Options</span><meta itemprop="position" content="1"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Options</h1></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="parse-options">Parse options<a href="#parse-options" class="hash-link" aria-label="Direct link to Parse options" title="Direct link to Parse options">​</a></h2><ul><li><p><code>bare_returns</code> (default <code>false</code>) -- support top level <code>return</code> statements</p></li><li><p><code>html5_comments</code> (default <code>true</code>)</p></li><li><p><code>shebang</code> (default <code>true</code>) -- support <code>#!command</code> as the first line</p></li><li><p><code>spidermonkey</code> (default <code>false</code>) -- accept a Spidermonkey (Mozilla) AST</p></li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="compress-options">Compress options<a href="#compress-options" class="hash-link" aria-label="Direct link to Compress options" title="Direct link to Compress options">​</a></h2><ul><li><p><code>defaults</code> (default: <code>true</code>) -- Pass <code>false</code> to disable most default
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/terser-square-logo.svg" alt="Terser logo" class="themedComponent_mlkZ themedComponent--light_NVdE" height="32" width="32"><img src="/img/terser-square-logo.svg" alt="Terser logo" class="themedComponent_mlkZ themedComponent--dark_xIcU" height="32" width="32"></div><b class="navbar__title text--truncate">Terser</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/api-reference/">API Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/cli-usage/">CLI Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/options/">Options</a></div><div class="navbar__items navbar__items--right"><a href="https://try.terser.org" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">REPL<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://github.com/terser/terser" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://opencollective.com/terser" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Donate<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/api-reference/">API Reference</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/cli-usage/">CLI Usage</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/miscellaneous/">Miscellaneous</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/docs/options/">Options</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/reporting-issues/">Reporting Issues</a></li><div style="padding:2ex 1ex"><div></div></div></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Options</span><meta itemprop="position" content="1"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Options</h1></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="parse-options">Parse options<a href="#parse-options" class="hash-link" aria-label="Direct link to Parse options" title="Direct link to Parse options">​</a></h2>
+<ul>
+<li>
+<p><code>bare_returns</code> (default <code>false</code>) -- support top level <code>return</code> statements</p>
+</li>
+<li>
+<p><code>html5_comments</code> (default <code>true</code>)</p>
+</li>
+<li>
+<p><code>shebang</code> (default <code>true</code>) -- support <code>#!command</code> as the first line</p>
+</li>
+<li>
+<p><code>spidermonkey</code> (default <code>false</code>) -- accept a Spidermonkey (Mozilla) AST</p>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="compress-options">Compress options<a href="#compress-options" class="hash-link" aria-label="Direct link to Compress options" title="Direct link to Compress options">​</a></h2>
+<ul>
+<li>
+<p><code>defaults</code> (default: <code>true</code>) -- Pass <code>false</code> to disable most default
 enabled <code>compress</code> transforms. Useful when you only want to enable a few
-<code>compress</code> options while disabling the rest.</p></li><li><p><code>arrows</code> (default: <code>true</code>) -- Class and object literal methods are converted
+<code>compress</code> options while disabling the rest.</p>
+</li>
+<li>
+<p><code>arrows</code> (default: <code>true</code>) -- Class and object literal methods are converted
 will also be converted to arrow expressions if the resultant code is shorter:
 <code>m(){return x}</code> becomes <code>m:()=&gt;x</code>. To do this to regular ES5 functions which
-don&#x27;t use <code>this</code> or <code>arguments</code>, see <code>unsafe_arrows</code>.</p></li><li><p><code>arguments</code> (default: <code>false</code>) -- replace <code>arguments[index]</code> with function
-parameter name whenever possible.</p></li><li><p><code>booleans</code> (default: <code>true</code>) -- various optimizations for boolean context,
-for example <code>!!a ? b : c → a ? b : c</code></p></li><li><p><code>booleans_as_integers</code> (default: <code>false</code>) -- Turn booleans into 0 and 1, also
-makes comparisons with booleans use <code>==</code> and <code>!=</code> instead of <code>===</code> and <code>!==</code>.</p></li><li><p><code>collapse_vars</code> (default: <code>true</code>) -- Collapse single-use non-constant variables,
-side effects permitting.</p></li><li><p><code>comparisons</code> (default: <code>true</code>) -- apply certain optimizations to binary nodes,
+don&#x27;t use <code>this</code> or <code>arguments</code>, see <code>unsafe_arrows</code>.</p>
+</li>
+<li>
+<p><code>arguments</code> (default: <code>false</code>) -- replace <code>arguments[index]</code> with function
+parameter name whenever possible.</p>
+</li>
+<li>
+<p><code>booleans</code> (default: <code>true</code>) -- various optimizations for boolean context,
+for example <code>!!a ? b : c → a ? b : c</code></p>
+</li>
+<li>
+<p><code>booleans_as_integers</code> (default: <code>false</code>) -- Turn booleans into 0 and 1, also
+makes comparisons with booleans use <code>==</code> and <code>!=</code> instead of <code>===</code> and <code>!==</code>.</p>
+</li>
+<li>
+<p><code>collapse_vars</code> (default: <code>true</code>) -- Collapse single-use non-constant variables,
+side effects permitting.</p>
+</li>
+<li>
+<p><code>comparisons</code> (default: <code>true</code>) -- apply certain optimizations to binary nodes,
 e.g. <code>!(a &lt;= b) → a &gt; b</code> (only when <code>unsafe_comps</code>), attempts to negate binary
 nodes, e.g. <code>a = !b &amp;&amp; !c &amp;&amp; !d &amp;&amp; !e → a=!(b||c||d||e)</code> etc. Note: <code>comparisons</code>
-works best with <code>lhs_constants</code> enabled.</p></li><li><p><code>computed_props</code> (default: <code>true</code>) -- Transforms constant computed properties
-into regular ones: <code>{[&quot;computed&quot;]: 1}</code> is converted to <code>{computed: 1}</code>.</p></li><li><p><code>conditionals</code> (default: <code>true</code>) -- apply optimizations for <code>if</code>-s and conditional
-expressions</p></li><li><p><code>dead_code</code> (default: <code>true</code>) -- remove unreachable code</p></li><li><p><code>directives</code> (default: <code>true</code>) -- remove redundant or non-standard directives</p></li><li><p><code>drop_console</code> (default: <code>false</code>) -- Pass <code>true</code> to discard calls to
+works best with <code>lhs_constants</code> enabled.</p>
+</li>
+<li>
+<p><code>computed_props</code> (default: <code>true</code>) -- Transforms constant computed properties
+into regular ones: <code>{[&quot;computed&quot;]: 1}</code> is converted to <code>{computed: 1}</code>.</p>
+</li>
+<li>
+<p><code>conditionals</code> (default: <code>true</code>) -- apply optimizations for <code>if</code>-s and conditional
+expressions</p>
+</li>
+<li>
+<p><code>dead_code</code> (default: <code>true</code>) -- remove unreachable code</p>
+</li>
+<li>
+<p><code>directives</code> (default: <code>true</code>) -- remove redundant or non-standard directives</p>
+</li>
+<li>
+<p><code>drop_console</code> (default: <code>false</code>) -- Pass <code>true</code> to discard calls to
 <code>console.*</code> functions. If you only want to discard a portion of console,
-you can pass an array like this <code>[&#x27;log&#x27;, &#x27;info&#x27;]</code>, which will only discard <code>console.log</code>、 <code>console.info</code>.</p></li><li><p><code>drop_debugger</code> (default: <code>true</code>) -- remove <code>debugger;</code> statements</p></li><li><p><code>ecma</code> (default: <code>5</code>) -- Pass <code>2015</code> or greater to enable <code>compress</code> options that
-will transform ES5 code into smaller ES6+ equivalent forms.</p></li><li><p><code>evaluate</code> (default: <code>true</code>) -- attempt to evaluate constant expressions</p></li><li><p><code>expression</code> (default: <code>false</code>) -- Pass <code>true</code> to preserve completion values
-from terminal statements without <code>return</code>, e.g. in bookmarklets.</p></li><li><p><code>global_defs</code> (default: <code>{}</code>) -- see <a href="/docs/miscellaneous/#conditional-compilation">conditional compilation</a></p></li><li><p><code>hoist_funs</code> (default: <code>false</code>) -- hoist function declarations</p></li><li><p><code>hoist_props</code> (default: <code>true</code>) -- hoist properties from constant object and
+you can pass an array like this <code>[&#x27;log&#x27;, &#x27;info&#x27;]</code>, which will only discard <code>console.log</code>、 <code>console.info</code>.</p>
+</li>
+<li>
+<p><code>drop_debugger</code> (default: <code>true</code>) -- remove <code>debugger;</code> statements</p>
+</li>
+<li>
+<p><code>ecma</code> (default: <code>5</code>) -- Pass <code>2015</code> or greater to enable <code>compress</code> options that
+will transform ES5 code into smaller ES6+ equivalent forms.</p>
+</li>
+<li>
+<p><code>evaluate</code> (default: <code>true</code>) -- attempt to evaluate constant expressions</p>
+</li>
+<li>
+<p><code>expression</code> (default: <code>false</code>) -- Pass <code>true</code> to preserve completion values
+from terminal statements without <code>return</code>, e.g. in bookmarklets.</p>
+</li>
+<li>
+<p><code>global_defs</code> (default: <code>{}</code>) -- see <a href="/docs/miscellaneous/#conditional-compilation">conditional compilation</a></p>
+</li>
+<li>
+<p><code>hoist_funs</code> (default: <code>false</code>) -- hoist function declarations</p>
+</li>
+<li>
+<p><code>hoist_props</code> (default: <code>true</code>) -- hoist properties from constant object and
 array literals into regular variables subject to a set of constraints. For example:
 <code>var o={p:1, q:2}; f(o.p, o.q);</code> is converted to <code>f(1, 2);</code>. Note: <code>hoist_props</code>
 works best with <code>mangle</code> enabled, the <code>compress</code> option <code>passes</code> set to <code>2</code> or higher,
-and the <code>compress</code> option <code>toplevel</code> enabled.</p></li><li><p><code>hoist_vars</code> (default: <code>false</code>) -- hoist <code>var</code> declarations (this is <code>false</code>
-by default because it seems to increase the size of the output in general)</p></li><li><p><code>if_return</code> (default: <code>true</code>) -- optimizations for if/return and if/continue</p></li><li><p><code>inline</code> (default: <code>true</code>) -- inline calls to function with simple/<code>return</code> statement:</p><ul><li><code>false</code> -- same as <code>0</code></li><li><code>0</code> -- disabled inlining</li><li><code>1</code> -- inline simple functions</li><li><code>2</code> -- inline functions with arguments</li><li><code>3</code> -- inline functions with arguments and variables</li><li><code>true</code> -- same as <code>3</code></li></ul></li><li><p><code>join_vars</code> (default: <code>true</code>) -- join consecutive <code>var</code>, <code>let</code> and <code>const</code> statements</p></li><li><p><code>keep_classnames</code> (default: <code>false</code>) -- Pass <code>true</code> to prevent the compressor from
+and the <code>compress</code> option <code>toplevel</code> enabled.</p>
+</li>
+<li>
+<p><code>hoist_vars</code> (default: <code>false</code>) -- hoist <code>var</code> declarations (this is <code>false</code>
+by default because it seems to increase the size of the output in general)</p>
+</li>
+<li>
+<p><code>if_return</code> (default: <code>true</code>) -- optimizations for if/return and if/continue</p>
+</li>
+<li>
+<p><code>inline</code> (default: <code>true</code>) -- inline calls to function with simple/<code>return</code> statement:</p>
+<ul>
+<li><code>false</code> -- same as <code>0</code></li>
+<li><code>0</code> -- disabled inlining</li>
+<li><code>1</code> -- inline simple functions</li>
+<li><code>2</code> -- inline functions with arguments</li>
+<li><code>3</code> -- inline functions with arguments and variables</li>
+<li><code>true</code> -- same as <code>3</code></li>
+</ul>
+</li>
+<li>
+<p><code>join_vars</code> (default: <code>true</code>) -- join consecutive <code>var</code>, <code>let</code> and <code>const</code> statements</p>
+</li>
+<li>
+<p><code>keep_classnames</code> (default: <code>false</code>) -- Pass <code>true</code> to prevent the compressor from
 discarding class names. Pass a regular expression to only keep class names matching
-that regex. See also: the <code>keep_classnames</code> <a href="/docs/options/#mangle-options">mangle option</a>.</p></li><li><p><code>keep_fargs</code> (default: <code>true</code>) -- Prevents the compressor from discarding unused
-function arguments.  You need this for code which relies on <code>Function.length</code>.</p></li><li><p><code>keep_fnames</code> (default: <code>false</code>) -- Pass <code>true</code> to prevent the
+that regex. See also: the <code>keep_classnames</code> <a href="/docs/options/#mangle-options">mangle option</a>.</p>
+</li>
+<li>
+<p><code>keep_fargs</code> (default: <code>true</code>) -- Prevents the compressor from discarding unused
+function arguments.  You need this for code which relies on <code>Function.length</code>.</p>
+</li>
+<li>
+<p><code>keep_fnames</code> (default: <code>false</code>) -- Pass <code>true</code> to prevent the
 compressor from discarding function names. Pass a regular expression to only keep
 function names matching that regex. Useful for code relying on <code>Function.prototype.name</code>.
-See also: the <code>keep_fnames</code> <a href="/docs/options/#mangle-options">mangle option</a>.</p></li><li><p><code>keep_infinity</code> (default: <code>false</code>) -- Pass <code>true</code> to prevent <code>Infinity</code> from
-being compressed into <code>1/0</code>, which may cause performance issues on Chrome.</p></li><li><p><code>lhs_constants</code> (default: <code>true</code>) -- Moves constant values to the left-hand side
-of binary nodes. <code>foo == 42 → 42 == foo</code></p></li><li><p><code>loops</code> (default: <code>true</code>) -- optimizations for <code>do</code>, <code>while</code> and <code>for</code> loops
-when we can statically determine the condition.</p></li><li><p><code>module</code> (default <code>false</code>) -- Pass <code>true</code> when compressing an ES6 module. Strict
-mode is implied and the <code>toplevel</code> option as well.</p></li><li><p><code>negate_iife</code> (default: <code>true</code>) -- negate &quot;Immediately-Called Function Expressions&quot;
+See also: the <code>keep_fnames</code> <a href="/docs/options/#mangle-options">mangle option</a>.</p>
+</li>
+<li>
+<p><code>keep_infinity</code> (default: <code>false</code>) -- Pass <code>true</code> to prevent <code>Infinity</code> from
+being compressed into <code>1/0</code>, which may cause performance issues on Chrome.</p>
+</li>
+<li>
+<p><code>lhs_constants</code> (default: <code>true</code>) -- Moves constant values to the left-hand side
+of binary nodes. <code>foo == 42 → 42 == foo</code></p>
+</li>
+<li>
+<p><code>loops</code> (default: <code>true</code>) -- optimizations for <code>do</code>, <code>while</code> and <code>for</code> loops
+when we can statically determine the condition.</p>
+</li>
+<li>
+<p><code>module</code> (default <code>false</code>) -- Pass <code>true</code> when compressing an ES6 module. Strict
+mode is implied and the <code>toplevel</code> option as well.</p>
+</li>
+<li>
+<p><code>negate_iife</code> (default: <code>true</code>) -- negate &quot;Immediately-Called Function Expressions&quot;
 where the return value is discarded, to avoid the parens that the
-code generator would insert.</p></li><li><p><code>passes</code> (default: <code>1</code>) -- The maximum number of times to run compress.
+code generator would insert.</p>
+</li>
+<li>
+<p><code>passes</code> (default: <code>1</code>) -- The maximum number of times to run compress.
 In some cases more than one pass leads to further compressed code.  Keep in
-mind more passes will take more time.</p></li><li><p><code>properties</code> (default: <code>true</code>) -- rewrite property access using the dot notation, for
-example <code>foo[&quot;bar&quot;] → foo.bar</code></p></li><li><p><code>pure_funcs</code> (default: <code>null</code>) -- You can pass an array of names and
+mind more passes will take more time.</p>
+</li>
+<li>
+<p><code>properties</code> (default: <code>true</code>) -- rewrite property access using the dot notation, for
+example <code>foo[&quot;bar&quot;] → foo.bar</code></p>
+</li>
+<li>
+<p><code>pure_funcs</code> (default: <code>null</code>) -- You can pass an array of names and
 Terser will assume that those functions do not produce side
 effects.  DANGER: will not check if the name is redefined in scope.
 An example case here, for instance <code>var q = Math.floor(a/b)</code>.  If
@@ -61,111 +185,309 @@ still keep the <code>Math.floor(a/b)</code>, not knowing what it does.  You can
 pass <code>pure_funcs: [ &#x27;Math.floor&#x27; ]</code> to let it know that this
 function won&#x27;t produce any side effect, in which case the whole
 statement would get discarded.  The current implementation adds some
-overhead (compression will be slower).</p></li><li><p><code>pure_getters</code> (default: <code>&quot;strict&quot;</code>) -- If you pass <code>true</code> for
+overhead (compression will be slower).</p>
+</li>
+<li>
+<p><code>pure_getters</code> (default: <code>&quot;strict&quot;</code>) -- If you pass <code>true</code> for
 this, Terser will assume that object property access
 (e.g. <code>foo.bar</code> or <code>foo[&quot;bar&quot;]</code>) doesn&#x27;t have any side effects.
 Specify <code>&quot;strict&quot;</code> to treat <code>foo.bar</code> as side-effect-free only when
-<code>foo</code> is certain to not throw, i.e. not <code>null</code> or <code>undefined</code>.</p></li><li><p><code>pure_new</code> (default: <code>false</code>) -- Set to <code>true</code> to assume <code>new X()</code> never has
-side effects.</p></li><li><p><code>reduce_vars</code> (default: <code>true</code>) -- Improve optimization on variables assigned with and
-used as constant values.</p></li><li><p><code>reduce_funcs</code> (default: <code>true</code>) -- Inline single-use functions when
+<code>foo</code> is certain to not throw, i.e. not <code>null</code> or <code>undefined</code>.</p>
+</li>
+<li>
+<p><code>pure_new</code> (default: <code>false</code>) -- Set to <code>true</code> to assume <code>new X()</code> never has
+side effects.</p>
+</li>
+<li>
+<p><code>reduce_vars</code> (default: <code>true</code>) -- Improve optimization on variables assigned with and
+used as constant values.</p>
+</li>
+<li>
+<p><code>reduce_funcs</code> (default: <code>true</code>) -- Inline single-use functions when
 possible. Depends on <code>reduce_vars</code> being enabled.  Disabling this option
-sometimes improves performance of the output code.</p></li><li><p><code>sequences</code> (default: <code>true</code>) -- join consecutive simple statements using the
+sometimes improves performance of the output code.</p>
+</li>
+<li>
+<p><code>sequences</code> (default: <code>true</code>) -- join consecutive simple statements using the
 comma operator.  May be set to a positive integer to specify the maximum number
 of consecutive comma sequences that will be generated. If this option is set to
 <code>true</code> then the default <code>sequences</code> limit is <code>200</code>. Set option to <code>false</code> or <code>0</code>
 to disable. The smallest <code>sequences</code> length is <code>2</code>. A <code>sequences</code> value of <code>1</code>
 is grandfathered to be equivalent to <code>true</code> and as such means <code>200</code>. On rare
 occasions the default sequences limit leads to very slow compress times in which
-case a value of <code>20</code> or less is recommended.</p></li><li><p><code>side_effects</code> (default: <code>true</code>) -- Remove expressions which have no side effects
-and whose results aren&#x27;t used.</p></li><li><p><code>switches</code> (default: <code>true</code>) -- de-duplicate and remove unreachable <code>switch</code> branches</p></li><li><p><code>toplevel</code> (default: <code>false</code>) -- drop unreferenced functions (<code>&quot;funcs&quot;</code>) and/or
+case a value of <code>20</code> or less is recommended.</p>
+</li>
+<li>
+<p><code>side_effects</code> (default: <code>true</code>) -- Remove expressions which have no side effects
+and whose results aren&#x27;t used.</p>
+</li>
+<li>
+<p><code>switches</code> (default: <code>true</code>) -- de-duplicate and remove unreachable <code>switch</code> branches</p>
+</li>
+<li>
+<p><code>toplevel</code> (default: <code>false</code>) -- drop unreferenced functions (<code>&quot;funcs&quot;</code>) and/or
 variables (<code>&quot;vars&quot;</code>) in the top level scope (<code>false</code> by default, <code>true</code> to drop
-both unreferenced functions and variables)</p></li><li><p><code>top_retain</code> (default: <code>null</code>) -- prevent specific toplevel functions and
+both unreferenced functions and variables)</p>
+</li>
+<li>
+<p><code>top_retain</code> (default: <code>null</code>) -- prevent specific toplevel functions and
 variables from <code>unused</code> removal (can be array, comma-separated, RegExp or
-function. Implies <code>toplevel</code>)</p></li><li><p><code>typeofs</code> (default: <code>true</code>) -- Transforms <code>typeof foo == &quot;undefined&quot;</code> into
+function. Implies <code>toplevel</code>)</p>
+</li>
+<li>
+<p><code>typeofs</code> (default: <code>true</code>) -- Transforms <code>typeof foo == &quot;undefined&quot;</code> into
 <code>foo === void 0</code>.  Note: recommend to set this value to <code>false</code> for IE10 and
-earlier versions due to known issues.</p></li><li><p><code>unsafe</code> (default: <code>false</code>) -- apply &quot;unsafe&quot; transformations
-(<a href="/docs/miscellaneous/#the-unsafe-compress-option">details</a>).</p></li><li><p><code>unsafe_arrows</code> (default: <code>false</code>) -- Convert ES5 style anonymous function
+earlier versions due to known issues.</p>
+</li>
+<li>
+<p><code>unsafe</code> (default: <code>false</code>) -- apply &quot;unsafe&quot; transformations
+(<a href="/docs/miscellaneous/#the-unsafe-compress-option">details</a>).</p>
+</li>
+<li>
+<p><code>unsafe_arrows</code> (default: <code>false</code>) -- Convert ES5 style anonymous function
 expressions to arrow functions if the function body does not reference <code>this</code>.
 Note: it is not always safe to perform this conversion if code relies on the
 the function having a <code>prototype</code>, which arrow functions lack.
-This transform requires that the <code>ecma</code> compress option is set to <code>2015</code> or greater.</p></li><li><p><code>unsafe_comps</code> (default: <code>false</code>) -- Reverse <code>&lt;</code> and <code>&lt;=</code> to <code>&gt;</code> and <code>&gt;=</code> to
+This transform requires that the <code>ecma</code> compress option is set to <code>2015</code> or greater.</p>
+</li>
+<li>
+<p><code>unsafe_comps</code> (default: <code>false</code>) -- Reverse <code>&lt;</code> and <code>&lt;=</code> to <code>&gt;</code> and <code>&gt;=</code> to
 allow improved compression. This might be unsafe when an at least one of two
 operands is an object with computed values due the use of methods like <code>get</code>,
 or <code>valueOf</code>. This could cause change in execution order after operands in the
 comparison are switching. Compression only works if both <code>comparisons</code> and
-<code>unsafe_comps</code> are both set to true.</p></li><li><p><code>unsafe_Function</code> (default: <code>false</code>) -- compress and mangle <code>Function(args, code)</code>
-when both <code>args</code> and <code>code</code> are string literals.</p></li><li><p><code>unsafe_math</code> (default: <code>false</code>) -- optimize numerical expressions like
-<code>2 * x * 3</code> into <code>6 * x</code>, which may give imprecise floating point results.</p></li><li><p><code>unsafe_symbols</code> (default: <code>false</code>) -- removes keys from native Symbol
-declarations, e.g <code>Symbol(&quot;kDog&quot;)</code> becomes <code>Symbol()</code>.</p></li><li><p><code>unsafe_methods</code> (default: false) -- Converts <code>{ m: function(){} }</code> to
+<code>unsafe_comps</code> are both set to true.</p>
+</li>
+<li>
+<p><code>unsafe_Function</code> (default: <code>false</code>) -- compress and mangle <code>Function(args, code)</code>
+when both <code>args</code> and <code>code</code> are string literals.</p>
+</li>
+<li>
+<p><code>unsafe_math</code> (default: <code>false</code>) -- optimize numerical expressions like
+<code>2 * x * 3</code> into <code>6 * x</code>, which may give imprecise floating point results.</p>
+</li>
+<li>
+<p><code>unsafe_symbols</code> (default: <code>false</code>) -- removes keys from native Symbol
+declarations, e.g <code>Symbol(&quot;kDog&quot;)</code> becomes <code>Symbol()</code>.</p>
+</li>
+<li>
+<p><code>unsafe_methods</code> (default: false) -- Converts <code>{ m: function(){} }</code> to
 <code>{ m(){} }</code>. <code>ecma</code> must be set to <code>6</code> or greater to enable this transform.
 If <code>unsafe_methods</code> is a RegExp then key/value pairs with keys matching the
 RegExp will be converted to concise methods.
 Note: if enabled there is a risk of getting a &quot;<code>&lt;method name&gt;</code> is not a
-constructor&quot; TypeError should any code try to <code>new</code> the former function.</p></li><li><p><code>unsafe_proto</code> (default: <code>false</code>) -- optimize expressions like
-<code>Array.prototype.slice.call(a)</code> into <code>[].slice.call(a)</code></p></li><li><p><code>unsafe_regexp</code> (default: <code>false</code>) -- enable substitutions of variables with
-<code>RegExp</code> values the same way as if they are constants.</p></li><li><p><code>unsafe_undefined</code> (default: <code>false</code>) -- substitute <code>void 0</code> if there is a
+constructor&quot; TypeError should any code try to <code>new</code> the former function.</p>
+</li>
+<li>
+<p><code>unsafe_proto</code> (default: <code>false</code>) -- optimize expressions like
+<code>Array.prototype.slice.call(a)</code> into <code>[].slice.call(a)</code></p>
+</li>
+<li>
+<p><code>unsafe_regexp</code> (default: <code>false</code>) -- enable substitutions of variables with
+<code>RegExp</code> values the same way as if they are constants.</p>
+</li>
+<li>
+<p><code>unsafe_undefined</code> (default: <code>false</code>) -- substitute <code>void 0</code> if there is a
 variable named <code>undefined</code> in scope (variable name will be mangled, typically
-reduced to a single character)</p></li><li><p><code>unused</code> (default: <code>true</code>) -- drop unreferenced functions and variables (simple
-direct variable assignments do not count as references unless set to <code>&quot;keep_assign&quot;</code>)</p></li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="mangle-options">Mangle options<a href="#mangle-options" class="hash-link" aria-label="Direct link to Mangle options" title="Direct link to Mangle options">​</a></h2><ul><li><p><code>eval</code> (default <code>false</code>) -- Pass <code>true</code> to mangle names visible in scopes
-where <code>eval</code> or <code>with</code> are used.</p></li><li><p><code>keep_classnames</code> (default <code>false</code>) -- Pass <code>true</code> to not mangle class names.
+reduced to a single character)</p>
+</li>
+<li>
+<p><code>unused</code> (default: <code>true</code>) -- drop unreferenced functions and variables (simple
+direct variable assignments do not count as references unless set to <code>&quot;keep_assign&quot;</code>)</p>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="mangle-options">Mangle options<a href="#mangle-options" class="hash-link" aria-label="Direct link to Mangle options" title="Direct link to Mangle options">​</a></h2>
+<ul>
+<li>
+<p><code>eval</code> (default <code>false</code>) -- Pass <code>true</code> to mangle names visible in scopes
+where <code>eval</code> or <code>with</code> are used.</p>
+</li>
+<li>
+<p><code>keep_classnames</code> (default <code>false</code>) -- Pass <code>true</code> to not mangle class names.
 Pass a regular expression to only keep class names matching that regex.
-See also: the <code>keep_classnames</code> <a href="/docs/options/#compress-options">compress option</a>.</p></li><li><p><code>keep_fnames</code> (default <code>false</code>) -- Pass <code>true</code> to not mangle function names.
+See also: the <code>keep_classnames</code> <a href="/docs/options/#compress-options">compress option</a>.</p>
+</li>
+<li>
+<p><code>keep_fnames</code> (default <code>false</code>) -- Pass <code>true</code> to not mangle function names.
 Pass a regular expression to only keep function names matching that regex.
 Useful for code relying on <code>Function.prototype.name</code>. See also: the <code>keep_fnames</code>
-<a href="/docs/options/#compress-options">compress option</a>.</p></li><li><p><code>module</code> (default <code>false</code>) -- Pass <code>true</code> an ES6 modules, where the toplevel
-scope is not the global scope. Implies <code>toplevel</code> and assumes input code is strict mode JS.</p></li><li><p><code>nth_identifier</code> (default: an internal mangler that weights based on character
+<a href="/docs/options/#compress-options">compress option</a>.</p>
+</li>
+<li>
+<p><code>module</code> (default <code>false</code>) -- Pass <code>true</code> an ES6 modules, where the toplevel
+scope is not the global scope. Implies <code>toplevel</code> and assumes input code is strict mode JS.</p>
+</li>
+<li>
+<p><code>nth_identifier</code> (default: an internal mangler that weights based on character
 frequency analysis) -- Pass an object with a <code>get(n)</code> function that converts an
 ordinal into the nth most favored (usually shortest) identifier.
 Optionally also provide <code>reset()</code>, <code>sort()</code>, and <code>consider(chars, delta)</code> to
-use character frequency analysis of the source code.</p></li><li><p><code>reserved</code> (default <code>[]</code>) -- Pass an array of identifiers that should be
-excluded from mangling. Example: <code>[&quot;foo&quot;, &quot;bar&quot;]</code>.</p></li><li><p><code>toplevel</code> (default <code>false</code>) -- Pass <code>true</code> to mangle names declared in the
-top level scope.</p></li><li><p><code>safari10</code> (default <code>false</code>) -- Pass <code>true</code> to work around the Safari 10 loop
+use character frequency analysis of the source code.</p>
+</li>
+<li>
+<p><code>reserved</code> (default <code>[]</code>) -- Pass an array of identifiers that should be
+excluded from mangling. Example: <code>[&quot;foo&quot;, &quot;bar&quot;]</code>.</p>
+</li>
+<li>
+<p><code>toplevel</code> (default <code>false</code>) -- Pass <code>true</code> to mangle names declared in the
+top level scope.</p>
+</li>
+<li>
+<p><code>safari10</code> (default <code>false</code>) -- Pass <code>true</code> to work around the Safari 10 loop
 iterator <a href="https://bugs.webkit.org/show_bug.cgi?id=171041" target="_blank" rel="noopener noreferrer">bug</a>
 &quot;Cannot declare a let variable twice&quot;.
-See also: the <code>safari10</code> <a href="/docs/options/#format-options">format option</a>.</p></li></ul><p>Examples:</p><div class="language-javascript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-javascript codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// test.js</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">var</span><span class="token plain"> globalVar</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">funcName</span><span class="token punctuation" style="color:#393A34">(</span><span class="token parameter">firstLongName</span><span class="token parameter punctuation" style="color:#393A34">,</span><span class="token parameter"> anotherLongName</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">var</span><span class="token plain"> myVariable </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> firstLongName </span><span class="token operator" style="color:#393A34">+</span><span class="token plain">  anotherLongName</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><div class="language-javascript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-javascript codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">var</span><span class="token plain"> code </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> fs</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">readFileSync</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;test.js&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;utf8&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword control-flow" style="color:#00009f">await</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">minify</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">code</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">code</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// &#x27;function funcName(a,n){}var globalVar;&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword control-flow" style="color:#00009f">await</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">minify</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">code</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token literal-property property" style="color:#36acaa">mangle</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token literal-property property" style="color:#36acaa">reserved</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&#x27;firstLongName&#x27;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">code</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// &#x27;function funcName(firstLongName,a){}var globalVar;&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword control-flow" style="color:#00009f">await</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">minify</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">code</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token literal-property property" style="color:#36acaa">mangle</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token literal-property property" style="color:#36acaa">toplevel</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">code</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// &#x27;function n(n,a){}var a;&#x27;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="mangle-properties-options">Mangle properties options<a href="#mangle-properties-options" class="hash-link" aria-label="Direct link to Mangle properties options" title="Direct link to Mangle properties options">​</a></h3><ul><li><p><code>builtins</code> (default: <code>false</code>) — Use <code>true</code> to allow the mangling of builtin
-DOM properties. Not recommended to override this setting.</p></li><li><p><code>debug</code> (default: <code>false</code>) — Mangle names with the original name still present.
-Pass an empty string <code>&quot;&quot;</code> to enable, or a non-empty string to set the debug suffix.</p></li><li><p><code>keep_quoted</code> (default: <code>false</code>) — How quoting properties (<code>{&quot;prop&quot;: ...}</code> and <code>obj[&quot;prop&quot;]</code>) controls what gets mangled.</p><ul><li><code>&quot;strict&quot;</code> (recommended) -- <code>obj.prop</code> is mangled.</li><li><code>false</code> -- <code>obj[&quot;prop&quot;]</code> is mangled.</li><li><code>true</code> -- <code>obj.prop</code> is mangled unless there is <code>obj[&quot;prop&quot;]</code> elsewhere in the code.</li></ul></li><li><p><code>nth_identifer</code> (default: an internal mangler that weights based on character
+See also: the <code>safari10</code> <a href="/docs/options/#format-options">format option</a>.</p>
+</li>
+</ul>
+<p>Examples:</p>
+<div class="language-javascript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-javascript codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// test.js</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">var</span><span class="token plain"> globalVar</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">funcName</span><span class="token punctuation" style="color:#393A34">(</span><span class="token parameter">firstLongName</span><span class="token parameter punctuation" style="color:#393A34">,</span><span class="token parameter"> anotherLongName</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">var</span><span class="token plain"> myVariable </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> firstLongName </span><span class="token operator" style="color:#393A34">+</span><span class="token plain">  anotherLongName</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-javascript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-javascript codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">var</span><span class="token plain"> code </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> fs</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">readFileSync</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;test.js&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;utf8&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword control-flow" style="color:#00009f">await</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">minify</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">code</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">code</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// &#x27;function funcName(a,n){}var globalVar;&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword control-flow" style="color:#00009f">await</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">minify</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">code</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token literal-property property" style="color:#36acaa">mangle</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token literal-property property" style="color:#36acaa">reserved</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&#x27;firstLongName&#x27;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">code</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// &#x27;function funcName(firstLongName,a){}var globalVar;&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword control-flow" style="color:#00009f">await</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">minify</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">code</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token literal-property property" style="color:#36acaa">mangle</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token literal-property property" style="color:#36acaa">toplevel</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">code</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// &#x27;function n(n,a){}var a;&#x27;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mangle-properties-options">Mangle properties options<a href="#mangle-properties-options" class="hash-link" aria-label="Direct link to Mangle properties options" title="Direct link to Mangle properties options">​</a></h3>
+<ul>
+<li>
+<p><code>builtins</code> (default: <code>false</code>) — Use <code>true</code> to allow the mangling of builtin
+DOM properties. Not recommended to override this setting.</p>
+</li>
+<li>
+<p><code>debug</code> (default: <code>false</code>) — Mangle names with the original name still present.
+Pass an empty string <code>&quot;&quot;</code> to enable, or a non-empty string to set the debug suffix.</p>
+</li>
+<li>
+<p><code>keep_quoted</code> (default: <code>false</code>) — How quoting properties (<code>{&quot;prop&quot;: ...}</code> and <code>obj[&quot;prop&quot;]</code>) controls what gets mangled.</p>
+<ul>
+<li><code>&quot;strict&quot;</code> (recommended) -- <code>obj.prop</code> is mangled.</li>
+<li><code>false</code> -- <code>obj[&quot;prop&quot;]</code> is mangled.</li>
+<li><code>true</code> -- <code>obj.prop</code> is mangled unless there is <code>obj[&quot;prop&quot;]</code> elsewhere in the code.</li>
+</ul>
+</li>
+<li>
+<p><code>nth_identifer</code> (default: an internal mangler that weights based on character
 frequency analysis) -- Pass an object with a <code>get(n)</code> function that converts an
 ordinal into the nth most favored (usually shortest) identifier.
 Optionally also provide <code>reset()</code>, <code>sort()</code>, and <code>consider(chars, delta)</code> to
-use character frequency analysis of the source code.</p></li><li><p><code>regex</code> (default: <code>null</code>) — Pass a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" target="_blank" rel="noopener noreferrer">RegExp literal or pattern string</a> to only mangle property matching the regular expression.</p></li><li><p><code>reserved</code> (default: <code>[]</code>) — Do not mangle property names listed in the
-<code>reserved</code> array.</p></li><li><p><code>undeclared</code> (default: <code>false</code>) - Mangle those names when they are accessed
+use character frequency analysis of the source code.</p>
+</li>
+<li>
+<p><code>regex</code> (default: <code>null</code>) — Pass a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" target="_blank" rel="noopener noreferrer">RegExp literal or pattern string</a> to only mangle property matching the regular expression.</p>
+</li>
+<li>
+<p><code>reserved</code> (default: <code>[]</code>) — Do not mangle property names listed in the
+<code>reserved</code> array.</p>
+</li>
+<li>
+<p><code>undeclared</code> (default: <code>false</code>) - Mangle those names when they are accessed
 as properties of known top level variables but their declarations are never
 found in input code. May be useful when only minifying parts of a project.
-See <a href="https://github.com/terser/terser/issues/397" target="_blank" rel="noopener noreferrer">#397</a> for more details.</p></li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="format-options">Format options<a href="#format-options" class="hash-link" aria-label="Direct link to Format options" title="Direct link to Format options">​</a></h2><p>These options control the format of Terser&#x27;s output code. Previously known
-as &quot;output options&quot;.</p><ul><li><p><code>ascii_only</code> (default <code>false</code>) -- escape Unicode characters in strings and
-regexps (affects directives with non-ascii characters becoming invalid)</p></li><li><p><code>beautify</code> (default <code>false</code>) -- (DEPRECATED) whether to beautify the output.
-When using the legacy <code>-b</code> CLI flag, this is set to true by default.</p></li><li><p><code>braces</code> (default <code>false</code>) -- always insert braces in <code>if</code>, <code>for</code>,
+See <a href="https://github.com/terser/terser/issues/397" target="_blank" rel="noopener noreferrer">#397</a> for more details.</p>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="format-options">Format options<a href="#format-options" class="hash-link" aria-label="Direct link to Format options" title="Direct link to Format options">​</a></h2>
+<p>These options control the format of Terser&#x27;s output code. Previously known
+as &quot;output options&quot;.</p>
+<ul>
+<li>
+<p><code>ascii_only</code> (default <code>false</code>) -- escape Unicode characters in strings and
+regexps (affects directives with non-ascii characters becoming invalid)</p>
+</li>
+<li>
+<p><code>beautify</code> (default <code>false</code>) -- (DEPRECATED) whether to beautify the output.
+When using the legacy <code>-b</code> CLI flag, this is set to true by default.</p>
+</li>
+<li>
+<p><code>braces</code> (default <code>false</code>) -- always insert braces in <code>if</code>, <code>for</code>,
 <code>do</code>, <code>while</code> or <code>with</code> statements, even if their body is a single
-statement.</p></li><li><p><code>comments</code> (default <code>&quot;some&quot;</code>) -- by default it keeps JSDoc-style comments
+statement.</p>
+</li>
+<li>
+<p><code>comments</code> (default <code>&quot;some&quot;</code>) -- by default it keeps JSDoc-style comments
 that contain &quot;@license&quot;, &quot;@copyright&quot;, &quot;@preserve&quot; or start with <code>!</code>, pass <code>true</code>
 or <code>&quot;all&quot;</code> to preserve all comments, <code>false</code> to omit comments in the output,
-a regular expression string (e.g. <code>/^!/</code>) or a function.</p></li><li><p><code>ecma</code> (default <code>5</code>) -- set desired EcmaScript standard version for output.
+a regular expression string (e.g. <code>/^!/</code>) or a function.</p>
+</li>
+<li>
+<p><code>ecma</code> (default <code>5</code>) -- set desired EcmaScript standard version for output.
 Set <code>ecma</code> to <code>2015</code> or greater to emit shorthand object properties - i.e.:
 <code>{a}</code> instead of <code>{a: a}</code>.  The <code>ecma</code> option will only change the output in
 direct control of the beautifier. Non-compatible features in your input will
 still be output as is. For example: an <code>ecma</code> setting of <code>5</code> will <strong>not</strong>
-convert modern code to ES5.</p></li><li><p><code>indent_level</code> (default <code>4</code>)</p></li><li><p><code>indent_start</code> (default <code>0</code>) -- prefix all lines by that many spaces</p></li><li><p><code>inline_script</code> (default <code>true</code>) -- escape HTML comments and the slash in
-occurrences of <code>&lt;/script&gt;</code> in strings</p></li><li><p><code>keep_numbers</code> (default <code>false</code>) -- keep number literals as it was in original code
-(disables optimizations like converting <code>1000000</code> into <code>1e6</code>)</p></li><li><p><code>keep_quoted_props</code> (default <code>false</code>) -- when turned on, prevents stripping
-quotes from property names in object literals.</p></li><li><p><code>max_line_len</code> (default <code>false</code>) -- maximum line length (for minified code)</p></li><li><p><code>preamble</code> (default <code>null</code>) -- when passed it must be a string and
+convert modern code to ES5.</p>
+</li>
+<li>
+<p><code>indent_level</code> (default <code>4</code>)</p>
+</li>
+<li>
+<p><code>indent_start</code> (default <code>0</code>) -- prefix all lines by that many spaces</p>
+</li>
+<li>
+<p><code>inline_script</code> (default <code>true</code>) -- escape HTML comments and the slash in
+occurrences of <code>&lt;/script&gt;</code> in strings</p>
+</li>
+<li>
+<p><code>keep_numbers</code> (default <code>false</code>) -- keep number literals as it was in original code
+(disables optimizations like converting <code>1000000</code> into <code>1e6</code>)</p>
+</li>
+<li>
+<p><code>keep_quoted_props</code> (default <code>false</code>) -- when turned on, prevents stripping
+quotes from property names in object literals.</p>
+</li>
+<li>
+<p><code>max_line_len</code> (default <code>false</code>) -- maximum line length (for minified code)</p>
+</li>
+<li>
+<p><code>preamble</code> (default <code>null</code>) -- when passed it must be a string and
 it will be prepended to the output literally.  The source map will
 adjust for this text.  Can be used to insert a comment containing
-licensing information, for example.</p></li><li><p><code>quote_keys</code> (default <code>false</code>) -- pass <code>true</code> to quote all keys in literal
-objects</p></li><li><p><code>quote_style</code> (default <code>0</code>) -- preferred quote style for strings (affects
-quoted property names and directives as well):</p><ul><li><code>0</code> -- prefers double quotes, switches to single quotes when there are
-more double quotes in the string itself. <code>0</code> is best for gzip size.</li><li><code>1</code> -- always use single quotes</li><li><code>2</code> -- always use double quotes</li><li><code>3</code> -- always use the original quotes</li></ul></li><li><p><code>preserve_annotations</code> -- (default <code>false</code>) -- Preserve <a href="/docs/miscellaneous/#annotations">Terser annotations</a> in the output.</p></li><li><p><code>safari10</code> (default <code>false</code>) -- set this option to <code>true</code> to work around
+licensing information, for example.</p>
+</li>
+<li>
+<p><code>quote_keys</code> (default <code>false</code>) -- pass <code>true</code> to quote all keys in literal
+objects</p>
+</li>
+<li>
+<p><code>quote_style</code> (default <code>0</code>) -- preferred quote style for strings (affects
+quoted property names and directives as well):</p>
+<ul>
+<li><code>0</code> -- prefers double quotes, switches to single quotes when there are
+more double quotes in the string itself. <code>0</code> is best for gzip size.</li>
+<li><code>1</code> -- always use single quotes</li>
+<li><code>2</code> -- always use double quotes</li>
+<li><code>3</code> -- always use the original quotes</li>
+</ul>
+</li>
+<li>
+<p><code>preserve_annotations</code> -- (default <code>false</code>) -- Preserve <a href="/docs/miscellaneous/#annotations">Terser annotations</a> in the output.</p>
+</li>
+<li>
+<p><code>safari10</code> (default <code>false</code>) -- set this option to <code>true</code> to work around
 the <a href="https://bugs.webkit.org/show_bug.cgi?id=176685" target="_blank" rel="noopener noreferrer">Safari 10/11 await bug</a>.
-See also: the <code>safari10</code> <a href="/docs/options/#mangle-options">mangle option</a>.</p></li><li><p><code>semicolons</code> (default <code>true</code>) -- separate statements with semicolons.  If
+See also: the <code>safari10</code> <a href="/docs/options/#mangle-options">mangle option</a>.</p>
+</li>
+<li>
+<p><code>semicolons</code> (default <code>true</code>) -- separate statements with semicolons.  If
 you pass <code>false</code> then whenever possible we will use a newline instead of a
 semicolon, leading to more readable output of minified code (size before
-gzip could be smaller; size after gzip insignificantly larger).</p></li><li><p><code>shebang</code> (default <code>true</code>) -- preserve shebang <code>#!</code> in preamble (bash scripts)</p></li><li><p><code>spidermonkey</code> (default <code>false</code>) -- produce a Spidermonkey (Mozilla) AST</p></li><li><p><code>webkit</code> (default <code>false</code>) -- enable workarounds for WebKit bugs.
-PhantomJS users should set this option to <code>true</code>.</p></li><li><p><code>wrap_iife</code> (default <code>false</code>) -- pass <code>true</code> to wrap immediately invoked
+gzip could be smaller; size after gzip insignificantly larger).</p>
+</li>
+<li>
+<p><code>shebang</code> (default <code>true</code>) -- preserve shebang <code>#!</code> in preamble (bash scripts)</p>
+</li>
+<li>
+<p><code>spidermonkey</code> (default <code>false</code>) -- produce a Spidermonkey (Mozilla) AST</p>
+</li>
+<li>
+<p><code>webkit</code> (default <code>false</code>) -- enable workarounds for WebKit bugs.
+PhantomJS users should set this option to <code>true</code>.</p>
+</li>
+<li>
+<p><code>wrap_iife</code> (default <code>false</code>) -- pass <code>true</code> to wrap immediately invoked
 function expressions. See
-<a href="https://github.com/mishoo/UglifyJS2/issues/640" target="_blank" rel="noopener noreferrer">#640</a> for more details.</p></li><li><p><code>wrap_func_args</code> (default <code>true</code>) -- pass <code>false</code> if you do not want to wrap
+<a href="https://github.com/mishoo/UglifyJS2/issues/640" target="_blank" rel="noopener noreferrer">#640</a> for more details.</p>
+</li>
+<li>
+<p><code>wrap_func_args</code> (default <code>true</code>) -- pass <code>false</code> if you do not want to wrap
 function expressions that are passed as arguments, in parenthesis. See
-<a href="https://github.com/nolanlawson/optimize-js" target="_blank" rel="noopener noreferrer">OptimizeJS</a> for more details.</p></li></ul></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/miscellaneous/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Miscellaneous</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reporting-issues/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Reporting Issues</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#parse-options" class="table-of-contents__link toc-highlight">Parse options</a></li><li><a href="#compress-options" class="table-of-contents__link toc-highlight">Compress options</a></li><li><a href="#mangle-options" class="table-of-contents__link toc-highlight">Mangle options</a><ul><li><a href="#mangle-properties-options" class="table-of-contents__link toc-highlight">Mangle properties options</a></li></ul></li><li><a href="#format-options" class="table-of-contents__link toc-highlight">Format options</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli-usage/">CLI Usage</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/terser" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a href="https://github.com/terser/terser" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 terser.org. Built with Docusaurus.</div></div></div></footer></div>
-<script src="/assets/js/runtime~main.f69e8dd4.js"></script>
-<script src="/assets/js/main.b0f0fbf7.js"></script>
+<a href="https://github.com/nolanlawson/optimize-js" target="_blank" rel="noopener noreferrer">OptimizeJS</a> for more details.</p>
+</li>
+</ul></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/miscellaneous/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Miscellaneous</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reporting-issues/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Reporting Issues</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#parse-options" class="table-of-contents__link toc-highlight">Parse options</a></li><li><a href="#compress-options" class="table-of-contents__link toc-highlight">Compress options</a></li><li><a href="#mangle-options" class="table-of-contents__link toc-highlight">Mangle options</a><ul><li><a href="#mangle-properties-options" class="table-of-contents__link toc-highlight">Mangle properties options</a></li></ul></li><li><a href="#format-options" class="table-of-contents__link toc-highlight">Format options</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli-usage/">CLI Usage</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/terser" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a href="https://github.com/terser/terser" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 terser.org. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
