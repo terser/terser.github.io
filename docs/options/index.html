@@ -9,7 +9,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Terser" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.60f573ac.css">
-<script src="/assets/js/runtime~main.d719af83.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.4328034f.js" defer="defer"></script>
 <script src="/assets/js/main.3f384625.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -255,7 +255,8 @@ This transform requires that the <code>ecma</code> compress option is set to <co
 allow improved compression. This might be unsafe when an at least one of two
 operands is an object with computed values due the use of methods like <code>get</code>,
 or <code>valueOf</code>. This could cause change in execution order after operands in the
-comparison are switching. Compression only works if both <code>comparisons</code> and
+comparison are switching. Or if one of two operands is <code>NaN</code>, the result is always
+<code>false</code>. Compression only works if both <code>comparisons</code> and
 <code>unsafe_comps</code> are both set to true.</p>
 </li>
 <li>
