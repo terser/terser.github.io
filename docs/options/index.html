@@ -9,7 +9,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Terser" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.150399cb.css">
-<script src="/assets/js/runtime~main.fdf37ea2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.2050398a.js" defer="defer"></script>
 <script src="/assets/js/main.562fff7c.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -88,6 +88,12 @@ you can pass an array like this <code>[&#x27;log&#x27;, &#x27;info&#x27;]</code>
 <li>
 <p><code>ecma</code> (default: <code>5</code>) -- Pass <code>2015</code> or greater to enable <code>compress</code> options that
 will transform ES5 code into smaller ES6+ equivalent forms.</p>
+</li>
+<li>
+<p><code>builtins_ecma</code> (default: <code>5</code>) -- An ES version number (like <code>ecma</code>). Tells Terser which well-known functions, constants, methods and classes are available in the global object. Does nothing by itself, but is used by <code>builtins_pure</code> and <code>unsafe</code>.</p>
+</li>
+<li>
+<p><code>builtins_pure</code> (default: <code>false</code>) -- Pass <code>true</code> to assume that functions matched by the <code>builtins_ecma</code> option (such as <code>Math.sin</code> or <code>unescape</code>) are pure and calls to them can be removed.</p>
 </li>
 <li>
 <p><code>evaluate</code> (default: <code>true</code>) -- attempt to evaluate constant expressions</p>
